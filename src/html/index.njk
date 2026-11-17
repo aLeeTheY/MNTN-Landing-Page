@@ -1,0 +1,139 @@
+{% extends "base/base.njk" %}
+
+<!-- ? название текущей страницы в домене --->
+{% set current_page__page_name = 'index' %}
+
+<!-- ? передаем текстовые данные из файла переовдов *.json для 'head' этой страницы -->
+{% set current_page__head_content = index.head %}
+
+{% block content %}
+    <section id="hero" class="relative pt-200 pb-844">
+        <div class="wrapper flex justify-center">
+            <nav class="wrapper fixed left-0 right-0 top-320 z-10 pointer-events-none flex items-center justify-between py-35">
+                <!-- * left panel | social --->
+                <div class="pointer-events-auto flex flex-col justify-center gap-y-24">
+                    <p class="hero-fixed-paragraph hero-fixed-paragraph--vertical">Follow us</p>
+
+                    <a href="https://www.instagram.com/">
+                        <svg width="24" height="24" aria-hidden="true">
+                            <use href="@icons/social/instagram.svg"></use>
+                            <span class="sr-only">We on Instagram</span>
+                        </svg>
+                    </a>
+
+                    <a href="https://x.com/">
+                        <svg width="24" height="24" aria-hidden="true">
+                            <use href="@icons/social/twitter.svg"></use>
+                            <span class="sr-only">We on Twitter</span>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- * right panel | scrollspy --->
+                <div class="pointer-events-auto right-panel-container">
+                    <ul class="flex flex-col items-end gap-y-40">
+                        <li><a class="hero-fixed-paragraph" href="#back-to-top">Start</a></li>
+                        <li><a class="hero-fixed-paragraph" href="#step-01">01</a></li>
+                        <li><a class="hero-fixed-paragraph" href="#step-02">02</a></li>
+                        <li><a class="hero-fixed-paragraph" href="#step-03">03</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="flex flex-col gap-y-32">
+                <h4>A Hiking guide</h4>
+                <h1>Be prepared for the Mountains and beyond!</h1>
+
+                <a class="goto-btn goto-btn--hero-variant" href="#steps">
+                    <span>scroll down</span>
+
+                    <span class="svg-wrap">
+                        <svg width="10" height="16" aria-hidden="true">
+                            <use href="@icons/other/arrow.svg"></use>
+                            <span class="sr-only">Go to steps...</span>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="steps" class="pb-200">
+        <ol class="wrapper wrapper--small flex flex-col gap-y-200">
+            <li id="step-01" class="flex items-center gap-x-114">
+                <div class="flex flex-col gap-y-27 max-w-632 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)]">
+                    <h4>Get Started</h4>
+                    <h2 data-number="01">What level of hiker are you?</h2>
+
+                    <p>
+                        Determining what level of hiker you are can be an important tool when planning future hikes. This hiking level guide
+                        will help you plan hikes according to different hike ratings set by various websites like All Trails and Modern
+                        Hiker. What type of hiker are you – novice, moderate, advanced moderate, expert, or expert backpacker?
+                    </p>
+
+                    <a class="goto-btn" href="#!">
+                        <span>read more</span>
+
+                        <span class="svg-wrap">
+                            <svg width="10" height="16" aria-hidden="true">
+                                <use href="@icons/other/arrow.svg"></use>
+                                <span class="sr-only">Read more about get started...</span>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                <img class="" src="@images/01.png" alt="" />
+            </li>
+
+            <li id="step-02" class="flex flex-row-reverse items-center gap-x-114">
+                <div class="flex flex-col gap-y-27 max-w-632 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)]">
+                    <h4>Hiking Essentials</h4>
+                    <h2 data-number="02">Picking the right Hiking Gear!</h2>
+
+                    <p>
+                        The nice thing about beginning hiking is that you don’t really need any special gear, you can probably get away with
+                        things you already have. Let’s start with clothing. A typical mistake hiking beginners make is wearing jeans and
+                        regular clothes, which will get heavy and chafe wif they get sweaty or wet.
+                    </p>
+
+                    <a class="goto-btn" href="#!">
+                        <span>read more</span>
+
+                        <span class="svg-wrap">
+                            <svg width="10" height="16" aria-hidden="true">
+                                <use href="@icons/other/arrow.svg"></use>
+                                <span class="sr-only">Read more about hiking essentials...</span>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                <img class="" src="@images/02.png" alt="" />
+            </li>
+
+            <li id="step-03" class="flex items-center gap-x-114">
+                <div class="flex flex-col gap-y-27 max-w-632 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)]">
+                    <h4>Where You Go Is The Key</h4>
+                    <h2 data-number="03">Understand Your Map & Timing</h2>
+
+                    <p>
+                        To start, print out the hiking guide and map. If it’s raining, throw them in a Zip-Lock bag. Read over the guide,
+                        study the map, and have a good idea of what to expect. I like to know what my next landmark is as I hike. For
+                        example, I’ll read the guide and know that say, in a mile, I make a right turn at the junction..
+                    </p>
+
+                    <a class="goto-btn" href="#!">
+                        <span>read more</span>
+
+                        <span class="svg-wrap">
+                            <svg width="10" height="16" aria-hidden="true">
+                                <use href="@icons/other/arrow.svg"></use>
+                                <span class="sr-only">Read more about where you go is the key...</span>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                <img class="" src="@images/03.png" alt="" />
+            </li>
+        </ol>
+    </section>
+{% endblock %}

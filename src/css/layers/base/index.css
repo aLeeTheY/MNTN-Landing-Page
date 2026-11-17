@@ -1,0 +1,27 @@
+@import './fonts.css';
+
+@layer base {
+    /* * Tailwind "@layer base" styles */
+
+    html {
+        /* ? Beasties требует явного шрифта в critical css для генерации font preload */
+        font-family: 'Gilroy', sans-serif;
+
+        /* * остальные Tailwind стили */
+        @apply w-full min-h-screen overflow-x-hidden scroll-smooth scrollbar-thin antialiased bg-[#0B1D26] text-white;
+
+        &:has(.menu-container.open) {
+            @apply overflow-hidden tablet:overflow-auto;
+        }
+    }
+
+    svg {
+        /* stylelint-disable-next-line value-keyword-case */
+        shape-rendering: geometricPrecision;
+        transform: translate3d(0, 0, 0);
+    }
+
+    /* img {
+        image-rendering: smooth;
+    } */
+}

@@ -1,0 +1,474 @@
+@layer base {
+    /* * Tailwind "@layer base" styles */
+
+    /* ! --- Chronicle Display
+       ! --------------------- */
+
+    /* ! --- 200 */
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 200;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-ExtraLight.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-ExtraLight.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-ExtraLight.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 200;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-ExtraLightItalic.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-ExtraLightItalic.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-ExtraLightItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 300 */
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 300;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Light.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Light.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Light.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 300;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-LightItalic.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-LightItalic.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-LightItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 400 */
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 400;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Regular.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Regular.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 400;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-RegularItalic.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-RegularItalic.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-RegularItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 600 */
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 600;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-SemiBold.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-SemiBold.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-SemiBold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 600;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-SemiBoldItalic.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-SemiBoldItalic.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-SemiBoldItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 700 */
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 700;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Bold.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Bold.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 700;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-BoldItalic.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-BoldItalic.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-BoldItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 900 */
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 900;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Black.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Black.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-Black.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Chronicle Display';
+        font-weight: 900;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Chronicle_Display/ChronicleDisplay-BlackItalic.woff2') format('woff2'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-BlackItalic.woff') format('woff'),
+            url('@fonts/Chronicle_Display/ChronicleDisplay-BlackItalic.ttf') format('truetype');
+    }
+
+    /* ! --- Gilroy
+       ! ---------- */
+
+    /* ! --- 100 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 100;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-Thin.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-Thin.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-Thin.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 100;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-ThinItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-ThinItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-ThinItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 200 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 200;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-ExtraLight.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-ExtraLight.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-ExtraLight.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 200;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-ExtraLightItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-ExtraLightItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-ExtraLightItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 300 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 300;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-Light.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-Light.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-Light.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 300;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-LightItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-LightItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-LightItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 400 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 400;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-Regular.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-Regular.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 400;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-RegularItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-RegularItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-RegularItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 500 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 500;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-Medium.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-Medium.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-Medium.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 500;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-MediumItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-MediumItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-MediumItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 600 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 600;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-SemiBold.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-SemiBold.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-SemiBold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 600;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-SemiBoldItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-SemiBoldItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-SemiBoldItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 700 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 700;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-Bold.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-Bold.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 700;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-BoldItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-BoldItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-BoldItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 800 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 800;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-ExtraBold.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-ExtraBold.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-ExtraBold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 800;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-ExtraBoldItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-ExtraBoldItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-ExtraBoldItalic.ttf') format('truetype');
+    }
+
+    /* ! --- 900 */
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 900;
+        font-style: normal;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-Black.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-Black.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-Black.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        font-weight: 900;
+        font-style: italic;
+
+        font-stretch: normal;
+        font-width: normal;
+
+        font-display: swap;
+        src:
+            url('@fonts/Gilroy/Gilroy-BlackItalic.woff2') format('woff2'),
+            url('@fonts/Gilroy/Gilroy-BlackItalic.woff') format('woff'),
+            url('@fonts/Gilroy/Gilroy-BlackItalic.ttf') format('truetype');
+    }
+}

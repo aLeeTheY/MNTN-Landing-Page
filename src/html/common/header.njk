@@ -1,0 +1,39 @@
+<header id="header" data-beasties-container>
+    <nav class="wrapper flex items-center justify-between">
+        <a id="header-logo" class="logo" href="#back-to-top">MNTN</a>
+
+        <ul class="hidden tablet:flex navigation-list">
+            <li class="navigation-list__item"><a href="#!">Equipment</a></li>
+            <li class="navigation-list__item"><a href="#!">About us</a></li>
+            <li class="navigation-list__item"><a href="#!">Blog</a></li>
+        </ul>
+
+        <a class="hidden tablet:flex navigation-button" href="#!">
+            <svg width="20" height="20" aria-hidden="true">
+                <use href="@icons/navigation/account.svg"></use>
+                <span class="sr-only">Log in to your account</span>
+            </svg>
+            <span>Account</span>
+        </a>
+
+        <button id="open-menu-btn" class="menu-btn" aria-label="Open menu">
+            <svg width="28" height="28" aria-hidden="true">
+                <use href="@icons/menu/hamburger.svg"></use>
+            </svg>
+        </button>
+
+        <div id="menu" class="menu-container">
+            <div class="wrapper flex items-center justify-between">
+                <a class="z-20 logo" href="#back-to-top">MNTN</a>
+
+                <button id="close-menu-btn" class="menu-btn" aria-label="Close menu">
+                    <svg width="28" height="28" aria-hidden="true">
+                        <use href="@icons/menu/close.svg"></use>
+                    </svg>
+                </button>
+            </div>
+            <!-- todo: доделать контент menu --->
+            <div class="wrapper">Hello</div>
+        </div>
+    </nav>
+</header>

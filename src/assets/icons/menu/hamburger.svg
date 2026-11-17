@@ -1,0 +1,10 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="currentColor"
+  height="14"
+  viewBox="0 0 24 14"
+  width="24">
+  <rect height="2" width="24" />
+  <rect height="2" width="24" y="6" />
+  <rect height="2" width="24" y="12" />
+</svg>
