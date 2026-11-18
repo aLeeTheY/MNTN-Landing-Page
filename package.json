@@ -161,6 +161,7 @@
         "@parcel/watcher@2.6.0": true
     },
     "dependencies": {
-        "@callbacksystems/focus-trap": "^3.0.0"
+        "@callbacksystems/focus-trap": "^3.0.0",
+        "pure-snow.js": "^2.1.0"
     }
 }

@@ -3,6 +3,24 @@
 @layer components {
     /* * Tailwind "@layer components" styles */
 
+    /* ! --- KEYFRAMES
+       ! ------------- */
+    @keyframes parallax-front {
+        to {
+            transform: translateY(var(--parallax-front));
+        }
+    }
+    @keyframes parallax-middle {
+        to {
+            transform: translateY(var(--parallax-middle));
+        }
+    }
+    @keyframes parallax-back {
+        to {
+            transform: translateY(var(--parallax-back));
+        }
+    }
+
     /* ! --- TYPOGRAPHY
        ! -------------- */
     h1 {
@@ -86,7 +104,7 @@
     }
 
     /* ! --- Page Wrapper
-   ! ---------------- */
+       ! ---------------- */
     .wrapper {
         @apply mx-auto w-full px-[clamp(16px,0.0641*100vw-11.3077px,80px)];
 
@@ -98,35 +116,50 @@
     /* ! --- INTERSECTION ELEMENTS
        ! ------------------------- */
     .intersection-images-container {
-        @apply absolute isolate -z-1 top-0 left-0 right-0 grid max-h-1690 overflow-hidden;
+        @apply absolute isolate -z-1 top-0 left-0 right-0 grid overflow-hidden max-h-1690;
 
         &::after {
-            @apply content-[''] absolute inset-0 z-1 bg-linear-to-t from-[#0B1D26] to-transparent from-[3.88%] to-[29.23%];
+            @apply content-[''] absolute inset-0 z-10 bg-linear-to-t from-[#0B1D26] to-transparent from-[3.88%] to-[29.23%];
         }
     }
 
-    .intersection-image-wrapper {
+    .intersection-image-wrapper,
+    .intersection-image-snow {
         grid-area: 1 / 1;
     }
 
     .intersection-image {
-        @apply object-cover object-[20%_0%] w-full h-full min-h-1024;
+        @apply object-cover object-[20%_0%] w-full h-full min-h-1024 will-change-transform motion-reduce:animate-none;
 
-        /* &.intersection-image--layer-front {
-            @apply absolute inset-0 z-3;
+        animation-timeline: scroll(root block);
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-range: 0 135vh;
+
+        &.intersection-image--layer-front {
+            @apply absolute inset-0 z-6;
+
+            height: calc(100% + -1 * var(--parallax-front));
+            animation-name: parallax-front;
         }
 
         &.intersection-image--layer-middle {
             @apply absolute inset-0 z-2;
+
+            height: calc(100% + -1 * var(--parallax-middle));
+            animation-name: parallax-middle;
         }
 
         &.intersection-image--layer-back {
-            @apply relative z-1;
-        } */
+            @apply relative h-auto z-0;
 
-        &.intersection-image--layer-back {
-            @apply h-auto;
+            height: calc(100% + -1 * var(--parallax-back));
+            animation-name: parallax-back;
         }
+    }
+
+    .intersection-image-snow {
+        @apply z-4;
     }
 
     /* ! --- HEADER
@@ -238,7 +271,7 @@
             @apply text-white;
 
             & .svg-wrap {
-                @apply w-16 h-24 pl-0 pt-14;
+                @apply w-16 h-24 pl-0 pt-14 animate-bounce;
 
                 &::before {
                     @apply top-0 left-1/2 -translate-y-0 -translate-x-1/2 w-2 h-21;

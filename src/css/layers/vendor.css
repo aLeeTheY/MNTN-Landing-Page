@@ -1,0 +1,14 @@
+/* @import 'pure-snow.js/style.css' layer(vendor); */
+
+@layer vendor {
+    /* * pure-snow.js/style.css */
+    .snowflake {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: linear-gradient(white, white);
+        /* Workaround for Chromium's selective color inversion */
+        border-radius: 50%;
+        filter: drop-shadow(0 0 6px white);
+    }
+}

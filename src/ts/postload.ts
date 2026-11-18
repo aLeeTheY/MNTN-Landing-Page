@@ -1,7 +1,7 @@
 // ! --- BASE IMPORTS
 // ! ----------------
 // * --- vendors scripts
-// ...
+import { createSnow, showSnow } from 'pure-snow.js'
 // * -------------------
 
 // * --- my scripts
@@ -14,4 +14,8 @@ import { initScrollspyManager } from 'modules/postload/scrollspy__manager'
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenuManager()
     initScrollspyManager()
+
+    // * decorations
+    createSnow()
+    showSnow(true)
 })

@@ -3,6 +3,13 @@
 
 @layer theme {
     /* * basic CSS-variables for Tailwind project */
+
+    :root {
+        /* ! --- HERO */
+        --parallax-front: -35vh;
+        --parallax-middle: -17.5vh;
+        --parallax-back: -8.75vh;
+    }
 }
 
 @theme {

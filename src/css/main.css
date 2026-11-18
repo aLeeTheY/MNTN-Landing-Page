@@ -2,6 +2,7 @@
 /* stylelint-disable no-invalid-position-at-import-rule */
 
 /* ! --- VENDORS IMPORT */
+@import '@css/layers/vendor.css';
 @import 'tailwindcss';
 
 /* ! --- TAILWIND PLUGINS */
