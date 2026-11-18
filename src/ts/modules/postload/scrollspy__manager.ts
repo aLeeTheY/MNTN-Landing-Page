@@ -1,82 +1,66 @@
-import FocusTrap from '@callbacksystems/focus-trap'
+export function initScrollspyManager() {
+    const sections = document.querySelectorAll('header[id], section[id], footer[id], li[id]')
+    const scrollspy = document.querySelector('.scrollspy') as HTMLDivElement
 
-//todo  можно доделать History API для мобилок
-export function initMenuManager() {
-    const open_btn = document.getElementById('open-menu-btn') as HTMLButtonElement
-    const close_btn = document.getElementById('close-menu-btn') as HTMLButtonElement
-
-    const menu = document.getElementById('menu') as HTMLDivElement
-    const menuFocusTrap = new FocusTrap(menu)
-
-    const header_logo = document.getElementById('header-logo') as HTMLLinkElement
-
-    if (!open_btn || !close_btn || !menu || !header_logo) {
+    if (sections.length === 0 || !scrollspy) {
         return
     }
 
-    let timeoutId: number | undefined
-
-    // * open menu logic
-    const openMenu = () => {
-        // * clear old timeout
-        clearTimeout(timeoutId)
-
-        document.documentElement.style.overflow = 'hidden'
-        menu.style.display = 'grid'
-
-        timeoutId = window.setTimeout(() => {
-            menu.classList.add('open')
-        }, 10)
-
-        // * start focus trap
-        menuFocusTrap.start()
-
-        // * focus to close btn
-        close_btn.focus()
+    // * без scrollspy на макете - функционал не нужен
+    if (window.innerWidth <= 1024) {
+        return
     }
 
-    // * close menu logic
-    const closeMenu = (closedByResize = false) => {
-        // * clear old timeout
-        clearTimeout(timeoutId)
-
-        menu.classList.remove('open')
-
-        timeoutId = window.setTimeout(() => {
-            menu.style.display = 'none'
-        }, 300)
-
-        // * stop focus trap
-        menuFocusTrap.stop()
-
-        if (closedByResize) {
-            // * focus to header logo
-            header_logo.focus()
-        } else {
-            // * focus to open btn
-            open_btn.focus()
-        }
-
-        // * body overflow to default
-        document.documentElement.style.overflow = ''
+    // * настройки обсервера
+    const observer_options = {
+        root: null,
+        rootMargin: '-45% 0px -65% 0px',
+        threshold: 0,
     }
 
-    // * listeners
-    open_btn.addEventListener('click', openMenu)
-    close_btn.addEventListener('click', () => closeMenu(false))
+    let prevId: null | string
+    const observer = new IntersectionObserver((entries) => {
+        // * тут код, который выполнится срабатывании обсервера
 
-    // * ESC keyboard button
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && menu.classList.contains('open')) {
-            closeMenu(false)
-        }
+        entries.forEach((entry) => {
+            let id = entry.target.getAttribute('id')
+
+            if (id === 'footer') {
+                // * footer всегда прокидывает id на step-03 т.к. он всегда идёт после него
+                id = 'step-03'
+            }
+
+            if (id !== 'step-01' && id !== 'step-02' && id !== 'step-03') {
+                // * если попадаются все другие id - сбрасываем класс
+                scrollspy.classList.remove(`active__${prevId}`)
+                prevId = null
+
+                return
+            }
+
+            // * целевые id
+            if (entry.isIntersecting) {
+                if (prevId) {
+                    scrollspy.classList.remove(`active__${prevId}`)
+                }
+
+                scrollspy.classList.add(`active__${id}`)
+            }
+
+            prevId = id
+        })
+    }, observer_options)
+
+    // * назначаем обсервер секциям
+    sections.forEach((section) => {
+        observer.observe(section)
     })
 
-    // * media queries
-    const media_query = window.matchMedia('(min-width: 576px)')
-    media_query.addEventListener('change', (e) => {
-        if (e.matches && menu.classList.contains('open')) {
-            closeMenu(true)
-        }
-    })
+    // // * media queries
+    // const media_query = window.matchMedia('(min-width: 576px)')
+    // media_query.addEventListener('change', (e) => {
+    //     if (e.matches && menu.classList.contains('open')) {
+    //         closeMenu(true)
+    //     }
+    // })
 }

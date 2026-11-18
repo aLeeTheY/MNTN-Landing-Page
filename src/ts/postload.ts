@@ -1,15 +1,17 @@
-// ! --- БАЗОВЫЕ ИМПОРТЫ
-// ! -------------------
+// ! --- BASE IMPORTS
+// ! ----------------
 // * --- vendors scripts
 // ...
 // * -------------------
 
 // * --- my scripts
-import { initMenuManager } from 'modules/postload/menu__manager'
+import { initMobileMenuManager } from 'modules/postload/mobile_menu__manager'
+import { initScrollspyManager } from 'modules/postload/scrollspy__manager'
 // * --------------
 
-// ! --- БАЗОВЫЙ UI СТРАНИЦЫ | СТАРТУЕТ МГНОВЕННО ПОСЛЕ ЗАГРУЗКИ
-// ! -----------------------------------------------------------
+// ! --- BASE PAGE UI | STARTS IMMEDIATELY AFTER PAGE LOAD
+// ! -----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    initMenuManager()
+    initMobileMenuManager()
+    initScrollspyManager()
 })

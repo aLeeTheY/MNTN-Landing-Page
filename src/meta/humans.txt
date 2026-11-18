@@ -7,12 +7,12 @@
     Location: Voronezh, Russia
 
 /* THANKS */
-    verstaem.online: For the design mockup and project (https://verstaem.online/layouts/simple).
+    Kryston Schwarze: For the design mockup (https://onepagelove.com/mntn).
 
 /* SITE */
-    Last update: 2026/11/05
+    Last update: 2026/11/18
     Language: English
-    Copyright: (c) 2026 verstaem.online
+    Copyright: (c) 2025-2026 aLeeTheY
     License: MIT
     Repository: https://github.com/aLeeTheY/MNTN-Landing-Page
     Frontend: Nunjucks, Tailwind

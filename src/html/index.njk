@@ -7,9 +7,10 @@
 {% set current_page__head_content = index.head %}
 
 {% block content %}
-    <section id="hero" class="relative pt-200 pb-844">
+    <section id="hero" class="relative pt-200 pb-976">
         <div class="wrapper flex justify-center">
-            <nav class="wrapper fixed left-0 right-0 top-320 z-10 pointer-events-none flex items-center justify-between py-35">
+            <nav
+                class="wrapper hidden fixed left-0 right-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none laptop:flex laptop:items-center laptop:justify-between">
                 <!-- * left panel | social --->
                 <div class="pointer-events-auto flex flex-col justify-center gap-y-24">
                     <p class="hero-fixed-paragraph hero-fixed-paragraph--vertical">Follow us</p>
@@ -30,12 +31,12 @@
                 </div>
 
                 <!-- * right panel | scrollspy --->
-                <div class="pointer-events-auto right-panel-container">
-                    <ul class="flex flex-col items-end gap-y-40">
-                        <li><a class="hero-fixed-paragraph" href="#back-to-top">Start</a></li>
-                        <li><a class="hero-fixed-paragraph" href="#step-01">01</a></li>
-                        <li><a class="hero-fixed-paragraph" href="#step-02">02</a></li>
-                        <li><a class="hero-fixed-paragraph" href="#step-03">03</a></li>
+                <div class="pointer-events-auto scrollspy">
+                    <ul class="flex flex-col items-end gap-y-40 scrollspy__list">
+                        <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#back-to-top">Start</a></li>
+                        <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#step-01">01</a></li>
+                        <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#step-02">02</a></li>
+                        <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#step-03">03</a></li>
                     </ul>
                 </div>
             </nav>
@@ -58,10 +59,10 @@
         </div>
     </section>
 
-    <section id="steps" class="pb-200">
-        <ol class="wrapper wrapper--small flex flex-col gap-y-200">
-            <li id="step-01" class="flex items-center gap-x-114">
-                <div class="flex flex-col gap-y-27 max-w-632 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)]">
+    <section id="steps">
+        <ol class="wrapper wrapper--limited flex flex-col gap-y-200">
+            <li id="step-01" class="flex flex-col gap-y-57 items-center desktop:flex-row desktop:gap-x-114">
+                <div class="flex flex-col gap-y-27 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)] desktop:max-w-632">
                     <h4>Get Started</h4>
                     <h2 data-number="01">What level of hiker are you?</h2>
 
@@ -82,11 +83,15 @@
                         </span>
                     </a>
                 </div>
-                <img class="" src="@images/01.png" alt="" />
+
+                <img
+                    class="object-cover object-[50%_75%] max-h-480 desktop:object-contain desktop:max-h-none"
+                    src="@images/01.png"
+                    alt="Step 01" />
             </li>
 
-            <li id="step-02" class="flex flex-row-reverse items-center gap-x-114">
-                <div class="flex flex-col gap-y-27 max-w-632 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)]">
+            <li id="step-02" class="flex flex-col gap-y-57 items-center desktop:flex-row-reverse desktop:gap-x-114">
+                <div class="flex flex-col gap-y-27 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)] desktop:max-w-632">
                     <h4>Hiking Essentials</h4>
                     <h2 data-number="02">Picking the right Hiking Gear!</h2>
 
@@ -107,11 +112,15 @@
                         </span>
                     </a>
                 </div>
-                <img class="" src="@images/02.png" alt="" />
+
+                <img
+                    class="object-cover object-[50%_35%] max-h-480 desktop:object-contain desktop:max-h-none"
+                    src="@images/02.png"
+                    alt="Step 02" />
             </li>
 
-            <li id="step-03" class="flex items-center gap-x-114">
-                <div class="flex flex-col gap-y-27 max-w-632 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)]">
+            <li id="step-03" class="flex flex-col gap-y-57 items-center desktop:flex-row desktop:gap-x-114">
+                <div class="flex flex-col gap-y-27 ml-[clamp(0px,0.3614*100vw-370.4819px,150px)] desktop:max-w-632">
                     <h4>Where You Go Is The Key</h4>
                     <h2 data-number="03">Understand Your Map & Timing</h2>
 
@@ -132,7 +141,11 @@
                         </span>
                     </a>
                 </div>
-                <img class="" src="@images/03.png" alt="" />
+
+                <img
+                    class="object-cover object-[50%_57.5%] max-h-480 desktop:object-contain desktop:max-h-none"
+                    src="@images/03.png"
+                    alt="Step 03" />
             </li>
         </ol>
     </section>

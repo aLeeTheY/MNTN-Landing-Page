@@ -1,7 +1,7 @@
 import FocusTrap from '@callbacksystems/focus-trap'
 
 //todo  можно доделать History API для мобилок
-export function initMenuManager() {
+export function initMobileMenuManager() {
     const open_btn = document.getElementById('open-menu-btn') as HTMLButtonElement
     const close_btn = document.getElementById('close-menu-btn') as HTMLButtonElement
 
