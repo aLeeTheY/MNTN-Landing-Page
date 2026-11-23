@@ -46,7 +46,7 @@
         @apply desktop:max-w-555;
 
         &::before {
-            @apply content-[attr(data-number)] absolute -z-1 -top-152 -left-95 font-[Gilroy,sans-serif] font-bold text-[clamp(180px,0.0402*100vw+162.8916px,240px)] text-white/10 leading-none tracking-normal whitespace-nowrap;
+            @apply content-[attr(data-number)] absolute -z-1 -top-[clamp(120px,0.0214*100vw+110.8755px,152px)] -left-[clamp(95px,0.0368*100vw+79.3173px,150px)] font-[Gilroy,sans-serif] font-bold text-[clamp(180px,0.0402*100vw+162.8916px,240px)] text-white/10 leading-none tracking-normal whitespace-nowrap;
         }
     }
 
