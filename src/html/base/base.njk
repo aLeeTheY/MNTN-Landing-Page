@@ -12,11 +12,13 @@
 
 <html class="nojs" lang="{{ i18n.current.htmlLang }}">
     {% include "service/head.njk" %}
-    <body {% if current_page__page_name == 'index' %}id="back-to-top"{% endif %} class="pt-64 pb-120">
+    <body
+        {% if current_page__page_name == 'index' %}id="back-to-top"{% endif %}
+        class="pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)]">
         <!-- * Preload scripts | Moved to 'head' --->
         {# {% include "service/scripts__preload.njk" %} #}
 
-        <!-- * Cookie consent --->
+        <!-- * Cookie consent0.0089x + 14.838 --->
         {% include "components/cookie_consent.njk" %}
 
         <!-- * Hero intersection image --->

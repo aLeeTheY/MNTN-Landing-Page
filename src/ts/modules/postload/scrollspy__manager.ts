@@ -6,10 +6,10 @@ export function initScrollspyManager() {
         return
     }
 
-    // * без scrollspy на макете - функционал не нужен
-    if (window.innerWidth <= 1024) {
-        return
-    }
+    // // * без scrollspy на макете - функционал не нужен
+    // if (window.innerWidth <= 1024) {
+    //     return
+    // }
 
     // * настройки обсервера
     const observer_options = {

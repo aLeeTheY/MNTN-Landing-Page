@@ -2,13 +2,13 @@
     <nav class="wrapper flex items-center justify-between">
         <a id="header-logo" class="logo" href="#back-to-top">MNTN</a>
 
-        <ul class="hidden tablet:flex navigation-list">
+        <ul class="hidden laptop:flex navigation-list">
             <li class="navigation-list__item"><a href="#!">Equipment</a></li>
             <li class="navigation-list__item"><a href="#!">About us</a></li>
             <li class="navigation-list__item"><a href="#!">Blog</a></li>
         </ul>
 
-        <a class="hidden tablet:flex navigation-button" href="#!">
+        <a class="hidden laptop:flex navigation-button" href="#!">
             <svg width="20" height="20" aria-hidden="true">
                 <use href="@icons/navigation/account.svg"></use>
                 <span class="sr-only">Log in to your account</span>
@@ -32,8 +32,49 @@
                     </svg>
                 </button>
             </div>
-            <!-- todo: доделать контент menu --->
-            <div class="wrapper">Hello</div>
+
+            <div class="wrapper grid grid-rows-[1fr_auto_auto] mt-72 gap-y-24">
+                <div class="row-1 flex flex-col items-end justify-between">
+                    <div class="pointer-events-auto scrollspy">
+                        <ul class="flex flex-col items-end gap-y-40 scrollspy__list">
+                            <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#back-to-top">Start</a></li>
+                            <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#step-01">01</a></li>
+                            <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#step-02">02</a></li>
+                            <li class="scrollspy__item"><a class="hero-fixed-paragraph scrollspy__link" href="#step-03">03</a></li>
+                        </ul>
+                    </div>
+
+                    <a class="navigation-button" href="#!">
+                        <svg width="20" height="20" aria-hidden="true">
+                            <use href="@icons/navigation/account.svg"></use>
+                            <span class="sr-only">Log in to your account</span>
+                        </svg>
+                        <span>Account</span>
+                    </a>
+                </div>
+
+                <hr class="row-2" />
+
+                <div class="row-3 pointer-events-auto flex items-center justify-end gap-x-24">
+                    <p class="hero-fixed-paragraph">Follow us</p>
+
+                    <a href="https://www.instagram.com/">
+                        <svg width="24" height="24" aria-hidden="true">
+                            <use href="@icons/social/instagram.svg"></use>
+                            <span class="sr-only">We on Instagram</span>
+                        </svg>
+                    </a>
+
+                    <a href="https://x.com/">
+                        <svg width="24" height="24" aria-hidden="true">
+                            <use href="@icons/social/twitter.svg"></use>
+                            <span class="sr-only">We on Twitter</span>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
+
+        <div class="menu-fade"></div>
     </nav>
 </header>

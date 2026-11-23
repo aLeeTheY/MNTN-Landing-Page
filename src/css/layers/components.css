@@ -5,6 +5,7 @@
 
     /* ! --- KEYFRAMES
        ! ------------- */
+    /* * parallax keyframes */
     @keyframes parallax-front {
         to {
             transform: translateY(var(--parallax-front));
@@ -21,35 +22,61 @@
         }
     }
 
+    /* * other keyframes */
+    @keyframes rubber-baton {
+        from {
+            width: 7.2px;
+        }
+        to {
+            width: 72px;
+        }
+    }
+
     /* ! --- TYPOGRAPHY
        ! -------------- */
     h1 {
-        @apply text-left text-white text-[clamp(66px,0.0217*100vw+56.7574px,88px)] font-[Chronicle_Display,serif] font-semibold leading-[100px] max-w-950;
+        @apply text-left text-white text-[clamp(42px,0.0175*100vw+34.5263px,48px)] font-[Chronicle_Display,serif] font-semibold leading-[1.136em];
+        @apply tablet:text-[clamp(48px,0.0392*100vw+17.8431px,58px)] tablet:max-w-[clamp(600px,0.4706*100vw+238.1176px,720px)];
+        @apply laptop:text-[clamp(58px,0.0335*100vw+23.6425px,88px)] laptop:max-w-[clamp(720px,0.257*100vw+456.5922px,950px)];
     }
 
     h2 {
-        @apply relative isolate text-left text-white text-[clamp(48px,0.0158*100vw+41.2781px,64px)] font-[Chronicle_Display,serif] font-semibold desktop:max-w-555;
+        @apply relative isolate text-left text-white text-[clamp(32px,0.0268*100vw+20.602px,48px)] font-[Chronicle_Display,serif] font-semibold;
+        @apply laptop:text-[clamp(48px,0.0179*100vw+29.676px,64px)];
+        @apply desktop:max-w-555;
 
         &::before {
-            @apply content-[attr(data-number)] absolute -z-1 -top-152 -left-150 font-[Gilroy,sans-serif] font-bold text-[clamp(180px,0.0592*100vw+154.7929px,240px)] text-white/10 leading-none tracking-normal whitespace-nowrap;
+            @apply content-[attr(data-number)] absolute -z-1 -top-152 -left-95 font-[Gilroy,sans-serif] font-bold text-[clamp(180px,0.0402*100vw+162.8916px,240px)] text-white/10 leading-none tracking-normal whitespace-nowrap;
         }
     }
 
     h3 {
-        @apply text-left text-[#FBD784] text-[clamp(18px,0.0059*100vw+15.4793px,24px)] font-[Gilroy,sans-serif] font-bold tracking-normal leading-[1.33em] text-nowrap;
+        @apply text-left text-[#FBD784] text-[clamp(18px,0.004*100vw+16.2892px,24px)] font-[Gilroy,sans-serif] font-bold tracking-normal leading-[1.33em] text-nowrap;
     }
 
     h4 {
-        @apply flex items-center gap-x-32 text-left text-[#FBD784] text-[clamp(14px,0.0039*100vw+12.3195px,18px)] font-[Gilroy,sans-serif] font-extrabold tracking-[0.33em] leading-none uppercase;
+        @apply flex items-center gap-x-32 text-left text-[#FBD784] text-[clamp(14px,0.0027*100vw+12.8594px,18px)] font-[Gilroy,sans-serif] font-extrabold tracking-[0.33em] leading-[1.66em] uppercase;
+        @apply tablet:leading-none;
 
         &::before {
             @apply content-[''] w-72 h-2 bg-[#FBD784];
+        }
+
+        &.animated::before {
+            @apply content-['']  h-2 bg-[#FBD784] will-change-[width];
+
+            animation-timeline: view();
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
+
+            animation-range: entry 10% cover 40%;
+            animation-name: rubber-baton;
         }
     }
 
     p,
     a {
-        @apply text-left text-white text-[clamp(14px,0.0039*100vw+12.3195px,18px)] font-[Gilroy,sans-serif] font-bold tracking-normal;
+        @apply text-left text-white text-[clamp(14px,0.0027*100vw+12.8594px,18px)] font-[Gilroy,sans-serif] font-bold tracking-normal;
     }
 
     p {
@@ -79,14 +106,15 @@
     }
 
     .footer-link {
-        @apply text-left text-white text-[clamp(14px,0.0039*100vw+12.3195px,18px)] font-[Gilroy,sans-serif] font-medium tracking-normal leading-[1.78em];
+        @apply text-left text-white text-[clamp(14px,0.0027*100vw+12.8594px,18px)] font-[Gilroy,sans-serif] font-medium tracking-normal leading-[1.78em];
 
         /* * hover */
         @apply hover:underline hover:decoration-dashed hover:decoration-3;
     }
 
     .copyright-text {
-        @apply text-left text-white/50 text-[clamp(14px,0.0039*100vw+12.3195px,18px)] font-[Gilroy,sans-serif] font-medium tracking-normal leading-[1.78em];
+        @apply text-center text-white/50 text-[clamp(14px,0.0027*100vw+12.8594px,18px)] font-[Gilroy,sans-serif] font-medium tracking-normal leading-[1.78em];
+        @apply laptop:text-left;
 
         & a {
             @apply text-current leading-[1.78em];
@@ -106,7 +134,8 @@
     /* ! --- Page Wrapper
        ! ---------------- */
     .wrapper {
-        @apply mx-auto w-full px-[clamp(16px,0.0641*100vw-11.3077px,80px)];
+        @apply mx-auto w-full px-[clamp(16px,0.0401*100vw-1.097px,40px)];
+        @apply laptop:px-[clamp(40px,0.0447*100vw-5.8101px,80px)];
 
         &.wrapper--limited {
             @apply max-w-1920 px-[clamp(16px,0.2101*100vw-73.4852px,229px)];
@@ -165,8 +194,8 @@
     /* ! --- HEADER
        ! ---------- */
     .logo {
-        @apply flex-none self-start;
-        @apply font-[Chronicle_Display,serif] text-[clamp(24px,0.0079*100vw+20.6391px,32px)] font-bold tracking-[1%] leading-none transition-[color,translate] duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
+        /* @apply flex-none self-start; */
+        @apply font-[Chronicle_Display,serif] text-[clamp(24px,0.0054*100vw+21.7189px,32px)] font-bold tracking-[1%] leading-none transition-[color,translate] duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
         /* * focus */
@@ -188,7 +217,7 @@
     }
 
     .navigation-button {
-        @apply flex items-center gap-x-8 font-[Gilroy,sans-serif] text-[clamp(14px,0.0039*100vw+12.3195px,18px)] font-bold transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
+        @apply flex items-center gap-x-8 font-[Gilroy,sans-serif] text-[clamp(14px,0.0027*100vw+12.8594px,18px)] font-bold transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
         /* * focus */
@@ -205,7 +234,7 @@
        ! ---------------------- */
     .menu-btn {
         @apply block transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
-        @apply tablet:hidden;
+        @apply laptop:hidden;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
         /* * focus */
@@ -219,14 +248,22 @@
     }
 
     .menu-container {
-        @apply fixed inset-0 z-50 grid grid-rows-[auto_1fr] pt-64 pb-120 bg-[#0B1D26] will-change-transform translate-x-full transition-transform duration-300;
-        @apply tablet:hidden;
+        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] will-change-transform translate-x-full transition-transform duration-300;
+        @apply laptop:hidden;
 
         /* * default */
         display: none;
 
         &.open {
             @apply translate-x-0;
+        }
+    }
+
+    .menu-fade {
+        @apply pointer-events-none select-none fixed inset-0 z-49 bg-black opacity-0 transition-[opacity] duration-300;
+
+        .menu-container.open ~ & {
+            @apply opacity-50;
         }
     }
 
@@ -305,7 +342,7 @@
     /* ! --- HERO
        ! -------- */
     .scrollspy {
-        @apply relative flex items-center pr-32 py-16 border-r-3 border-white/50;
+        @apply relative flex justify-end items-center pr-32 py-16 border-r-3 border-white/50;
 
         &::after {
             @apply content-[''] absolute -right-3 top-0 w-3 h-1/4 bg-white will-change-[top] transition-[top] duration-300;
