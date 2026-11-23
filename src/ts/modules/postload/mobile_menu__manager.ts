@@ -21,7 +21,7 @@ export function initMobileMenuManager() {
         // * clear old timeout
         clearTimeout(timeoutId)
 
-        document.documentElement.style.overflow = 'hidden'
+        // document.documentElement.style.overflow = 'hidden'
         menu.style.display = 'grid'
 
         timeoutId = window.setTimeout(() => {
@@ -57,8 +57,8 @@ export function initMobileMenuManager() {
             open_btn.focus()
         }
 
-        // * body overflow to default
-        document.documentElement.style.overflow = ''
+        // // * body overflow to default
+        // document.documentElement.style.overflow = ''
     }
 
     // * listeners

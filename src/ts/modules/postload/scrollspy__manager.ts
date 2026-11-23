@@ -1,15 +1,12 @@
 export function initScrollspyManager() {
     const sections = document.querySelectorAll('header[id], section[id], footer[id], li[id]')
-    const scrollspy = document.querySelector('.scrollspy') as HTMLDivElement
 
-    if (sections.length === 0 || !scrollspy) {
+    const scrollspy_desktop = document.getElementById('scrollspy-desktop') as HTMLDivElement
+    const scrollspy_mobile = document.getElementById('scrollspy-mobile') as HTMLDivElement
+
+    if (sections.length === 0 || !scrollspy_desktop || !scrollspy_mobile) {
         return
     }
-
-    // // * без scrollspy на макете - функционал не нужен
-    // if (window.innerWidth <= 1024) {
-    //     return
-    // }
 
     // * настройки обсервера
     const observer_options = {
@@ -32,7 +29,10 @@ export function initScrollspyManager() {
 
             if (id !== 'step-01' && id !== 'step-02' && id !== 'step-03') {
                 // * если попадаются все другие id - сбрасываем класс
-                scrollspy.classList.remove(`active__${prevId}`)
+
+                scrollspy_desktop.classList.remove(`active__${prevId}`)
+                scrollspy_mobile.classList.remove(`active__${prevId}`)
+
                 prevId = null
 
                 return
@@ -41,13 +41,15 @@ export function initScrollspyManager() {
             // * целевые id
             if (entry.isIntersecting) {
                 if (prevId) {
-                    scrollspy.classList.remove(`active__${prevId}`)
+                    scrollspy_desktop.classList.remove(`active__${prevId}`)
+                    scrollspy_mobile.classList.remove(`active__${prevId}`)
                 }
 
-                scrollspy.classList.add(`active__${id}`)
-            }
+                scrollspy_desktop.classList.add(`active__${id}`)
+                scrollspy_mobile.classList.add(`active__${id}`)
 
-            prevId = id
+                prevId = id
+            }
         })
     }, observer_options)
 
@@ -56,11 +58,28 @@ export function initScrollspyManager() {
         observer.observe(section)
     })
 
-    // // * media queries
-    // const media_query = window.matchMedia('(min-width: 576px)')
-    // media_query.addEventListener('change', (e) => {
-    //     if (e.matches && menu.classList.contains('open')) {
-    //         closeMenu(true)
-    //     }
-    // })
+    let ticking = false
+    window.addEventListener(
+        'scroll',
+        () => {
+            if (ticking) {
+                return
+            }
+            ticking = true
+
+            requestAnimationFrame(() => {
+                if (window.scrollY < 100) {
+                    if (prevId) {
+                        scrollspy_desktop.classList.remove(`active__${prevId}`)
+                        scrollspy_mobile.classList.remove(`active__${prevId}`)
+
+                        prevId = null
+                    }
+                }
+
+                ticking = false
+            })
+        },
+        { passive: true },
+    )
 }
