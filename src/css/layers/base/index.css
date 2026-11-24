@@ -10,7 +10,11 @@
         /* * остальные Tailwind стили */
         @apply w-full min-h-screen overflow-x-hidden antialiased bg-[#0B1D26] text-white;
 
+        /* * scrollbar settings */
         @apply scroll-smooth scrollbar-thin scrollbar-thumb-[#FBD784] scrollbar-track-transparent;
+
+        /* * text selection settings */
+        @apply selection:bg-[#FBD784] selection:text-[#0B1D26];
 
         /* &:has(.menu-container.open) {
             @apply overflow-hidden tablet:overflow-auto;

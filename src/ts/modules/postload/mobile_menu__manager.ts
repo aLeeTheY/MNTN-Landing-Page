@@ -4,35 +4,38 @@ import FocusTrap from '@callbacksystems/focus-trap'
 export function initMobileMenuManager() {
     const open_btn = document.getElementById('open-menu-btn') as HTMLButtonElement
     const close_btn = document.getElementById('close-menu-btn') as HTMLButtonElement
-
     const menu = document.getElementById('menu') as HTMLDivElement
-    const menuFocusTrap = new FocusTrap(menu)
-
     const header_logo = document.getElementById('header-logo') as HTMLLinkElement
 
     if (!open_btn || !close_btn || !menu || !header_logo) {
         return
     }
 
+    let menuFocusTrap = null
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
+    if (!isTouchDevice) {
+        /* * set focus trap */
+        menuFocusTrap = new FocusTrap(menu)
+    }
+
     let timeoutId: number | undefined
 
     // * open menu logic
     const openMenu = () => {
-        // * clear old timeout
-        clearTimeout(timeoutId)
-
         // document.documentElement.style.overflow = 'hidden'
         menu.style.display = 'grid'
 
-        timeoutId = window.setTimeout(() => {
+        requestAnimationFrame(() => {
             menu.classList.add('open')
-        }, 10)
 
-        // * start focus trap
-        menuFocusTrap.start()
+            if (menuFocusTrap) {
+                // * start focus trap
+                menuFocusTrap.start()
+            }
 
-        // * focus to close btn
-        close_btn.focus()
+            // * focus to close btn
+            close_btn.focus({ preventScroll: true })
+        })
     }
 
     // * close menu logic
@@ -42,23 +45,25 @@ export function initMobileMenuManager() {
 
         menu.classList.remove('open')
 
-        timeoutId = window.setTimeout(() => {
-            menu.style.display = 'none'
-        }, 300)
-
-        // * stop focus trap
-        menuFocusTrap.stop()
+        if (menuFocusTrap) {
+            // * stop focus trap
+            menuFocusTrap.stop()
+        }
 
         if (closedByResize) {
             // * focus to header logo
-            header_logo.focus()
+            header_logo.focus({ preventScroll: true })
         } else {
             // * focus to open btn
-            open_btn.focus()
+            open_btn.focus({ preventScroll: true })
         }
 
         // // * body overflow to default
         // document.documentElement.style.overflow = ''
+
+        timeoutId = window.setTimeout(() => {
+            menu.style.display = 'none'
+        }, 300)
     }
 
     // * listeners
@@ -73,7 +78,7 @@ export function initMobileMenuManager() {
     })
 
     // * media queries
-    const media_query = window.matchMedia('(min-width: 576px)')
+    const media_query = window.matchMedia('(min-width: 1024px)')
     media_query.addEventListener('change', (e) => {
         if (e.matches && menu.classList.contains('open')) {
             closeMenu(true)

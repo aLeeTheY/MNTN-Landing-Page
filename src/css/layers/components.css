@@ -144,12 +144,17 @@
 
     /* ! --- INTERSECTION ELEMENTS
        ! ------------------------- */
-    .intersection-images-container {
-        @apply absolute isolate -z-1 top-0 left-0 right-0 grid overflow-hidden max-h-1690;
+    .intersection-images-container-wrapper {
+        @apply -z-1 isolate absolute top-0 left-0 right-0;
 
         &::after {
-            @apply content-[''] absolute inset-0 z-10 bg-linear-to-t from-[#0B1D26] to-transparent from-[3.88%] to-[29.23%];
+            /* ? фикс неточной обрезки overflow-hidden | оставалась полоса картинки снизу */
+            @apply content-[''] z-10 absolute top-0 inset-x-0 -bottom-2 bg-linear-to-t from-[#0B1D26] to-transparent from-[3.88%] to-[29.23%];
         }
+    }
+
+    .intersection-images-container {
+        @apply z-0 isolate relative grid overflow-hidden max-h-1690;
     }
 
     .intersection-image-wrapper,
@@ -266,7 +271,7 @@
     }
 
     .menu-fade {
-        @apply pointer-events-none select-none fixed inset-0 z-49 bg-black opacity-0 transition-[opacity] duration-300;
+        @apply pointer-events-none select-none fixed inset-0 z-40 bg-black opacity-0 transition-[opacity] duration-300;
 
         .menu-container.open ~ & {
             @apply opacity-50;
