@@ -166,16 +166,20 @@
         animation-range: 0 135vh;
 
         &.intersection-image--layer-front {
-            @apply absolute inset-0 z-6;
+            @apply absolute inset-0 z-6 -translate-y-[clamp(55vw,-0.0105*100vw+430.4842px,100vw)] h-[calc((100%-1*var(--parallax-front))+clamp(55vw,-0.0105*100vw+430.4842px,100vw))];
+            @apply tablet:-translate-y-[clamp(27.5vw,-0.5522*100vw+847.0086px,55vw)] tablet:h-[calc((100%-1*var(--parallax-front))+clamp(27.5vw,-0.5522*100vw+847.0086px,55vw))];
+            @apply laptop:-translate-y-[clamp(20vw,0.1141*100vw+164.9162px,27.5vw)] laptop:h-[calc((100%-1*var(--parallax-front))+clamp(20vw,0.1141*100vw+164.9162px,27.5vw))];
+            @apply desktop:-translate-y-[20vw] desktop:h-[calc((100%-1*var(--parallax-front))+20vw)];
 
-            height: calc(100% + -1 * var(--parallax-front));
             animation-name: parallax-front;
         }
 
         &.intersection-image--layer-middle {
-            @apply absolute inset-0 z-2;
+            @apply absolute inset-0 z-2 -translate-y-[max(0px,calc(0.3395*100vw-651.7895px))];
 
-            height: calc(100% + -1 * var(--parallax-middle));
+            height: calc(
+                (100% + -1 * var(--parallax-middle)) + max(0px, calc(0.3395 * 100vw - 651.7895px))
+            );
             animation-name: parallax-middle;
         }
 
@@ -194,7 +198,7 @@
     /* ! --- HEADER
        ! ---------- */
     .logo {
-        /* @apply flex-none self-start; */
+        @apply flex-none self-start;
         @apply font-[Chronicle_Display,serif] text-[clamp(24px,0.0054*100vw+21.7189px,32px)] font-bold tracking-[1%] leading-none transition-[color,translate] duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
@@ -248,7 +252,7 @@
     }
 
     .menu-container {
-        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] will-change-transform translate-x-full transition-transform duration-300;
+        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] will-change-transform translate-x-full transition-transform duration-300 overflow-y-auto;
         @apply laptop:hidden;
 
         /* * default */

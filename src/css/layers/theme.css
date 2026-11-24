@@ -6,9 +6,9 @@
 
     :root {
         /* ! --- HERO */
-        --parallax-front: -35vh;
-        --parallax-middle: -17.5vh;
-        --parallax-back: -8.75vh;
+        --parallax-front: -50vh;
+        --parallax-middle: -12.5vh;
+        --parallax-back: 50vh;
     }
 }
 
