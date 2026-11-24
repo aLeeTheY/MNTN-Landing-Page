@@ -1,6 +1,7 @@
 // ! --- BASE IMPORTS
 // ! ----------------
 // * --- vendors scripts
+import AOS from 'aos'
 import { createSnow, showSnow } from 'pure-snow.js'
 // * -------------------
 
@@ -15,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenuManager()
     initScrollspyManager()
 
-    // * decorations
+    // * aos
+    AOS.init()
+
+    // * snow
     createSnow()
     showSnow(true)
 })

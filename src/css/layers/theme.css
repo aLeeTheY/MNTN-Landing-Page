@@ -6,12 +6,15 @@
 
     :root {
         /* ! --- HERO */
-        --parallax-front: calc(
-            -1 * (0.1239 * 100vw + 293.7223px)
-        ); /* * -50vh | from 320px to 3440px */
-        --parallax-middle: calc(
-            -1 * (0.031 * 100vw + 73.4306px)
-        ); /* * -12.5vh | from 320px to 3440px */
+
+        /* * -50vh | from 320px to 3440px */
+        /* --parallax-front: calc(-1 * (0.1239 * 100vw + 293.7223px)); */
+        /* * -12.5vh | from 320px to 3440px */
+        /* --parallax-middle: calc(-1 * (0.031 * 100vw + 73.4306px)); */
+
+        --parallax-front: -50vh;
+        --parallax-middle: -12.5vh;
+
         --parallax-back: 50vh;
     }
 }

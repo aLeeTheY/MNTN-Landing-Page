@@ -25,19 +25,41 @@
         <div class="intersection-images-container-wrapper">
             <div class="intersection-images-container">
                 <img
-                    class="intersection-image intersection-image--layer-back"
+                    data-aos="zoom-out"
+                    data-aos-delay="150"
+                    data-aos-duration="2500"
+                    data-aos-easing="ease-out-cubic"
+                    class="aos-item intersection-image intersection-image--layer-back"
                     data-my-picture-class="intersection-image-wrapper"
+                    fetchpriority="high"
                     src="@images/hero/bg__layer_back.png"
                     alt="Hero background (layer back)" />
                 <img
-                    class="intersection-image intersection-image--layer-middle"
+                    data-aos="zoom-out-up"
+                    data-aos-delay="150"
+                    data-aos-duration="2500"
+                    data-aos-easing="ease-out-cubic"
+                    class="aos-item intersection-image intersection-image--layer-middle"
                     data-my-picture-class="intersection-image-wrapper"
+                    fetchpriority="high"
                     src="@images/hero/bg__layer_middle.png"
                     alt="Hero background (layer middle)" />
-                <div id="snow" class=" intersection-image-snow" data-count="500"></div>
+                <div
+                    id="snow"
+                    class=" intersection-image-snow"
+                    data-count="500"
+                    data-aos="zoom-in-left"
+                    data-aos-delay="150"
+                    data-aos-duration="2500"
+                    data-aos-easing="ease-out-cubic"></div>
                 <img
-                    class="intersection-image intersection-image--layer-front"
+                    data-aos="zoom-out-right"
+                    data-aos-delay="150"
+                    data-aos-duration="2500"
+                    data-aos-easing="ease-out-cubic"
+                    class="aos-item intersection-image intersection-image--layer-front"
                     data-my-picture-class="intersection-image-wrapper"
+                    fetchpriority="high"
                     src="@images/hero/bg__layer_front.png"
                     alt="Hero background (layer front)" />
             </div>

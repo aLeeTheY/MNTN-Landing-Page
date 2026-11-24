@@ -151,12 +151,25 @@ function createHtmlStream({
                     // ? добавлять decoding="async"
                     setAsyncDecoding: true,
 
+                    // ? список атрибутов, которые переносим с <img> на <picture>
+                    liftAttributesToPicture: [
+                        'data-aos',
+                        'data-aos-offset',
+                        'data-aos-delay',
+                        'data-aos-duration',
+                        'data-aos-easing',
+                        'data-aos-mirror',
+                        'data-aos-once',
+                        'data-aos-anchor-placement',
+                    ],
+
                     breakpoints: [
                         {
+                            /* ! при редактировании media или baseWidth надо проверить asset/images.js и head preload images links */
                             media: 768,
                             suffix: '-mobile',
                             baseWidth: 375,
-                            densities: [1, 2, 3],
+                            densities: [1, 2],
                         },
                     ],
                 }),

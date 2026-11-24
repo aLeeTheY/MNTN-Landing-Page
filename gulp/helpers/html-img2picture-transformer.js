@@ -23,6 +23,9 @@ export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
         setLazyLoading: true,
         setAsyncDecoding: true,
 
+        // ? список атрибутов, которые переносим с <img> на <picture> | empty by default
+        liftAttributesToPicture: [],
+
         // PRODUCTION-READY CONFIG
         breakpoints: [
             {
@@ -118,6 +121,20 @@ export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
                     picture.attribs.class = img.attribs['data-my-picture-class']
                 }
 
+                const liftedAttrs = Array.isArray(config.liftAttributesToPicture)
+                    ? config.liftAttributesToPicture
+                    : []
+
+                // * вешаем разрешенные атрибуты с img на picture
+                for (const attrName of liftedAttrs) {
+                    if (
+                        img.attribs[attrName] !== undefined &&
+                        picture.attribs[attrName] === undefined
+                    ) {
+                        picture.attribs[attrName] = img.attribs[attrName]
+                    }
+                }
+
                 // ГЕНЕРИРУЕМ <source> ТЕГИ
                 allowedMimeTypes.forEach((mimeType) => {
                     const getExtension = (mime, origExt) => {
@@ -206,6 +223,13 @@ export function htmlImg2PictureTransformer(assetsSrcDir, options = {}) {
                 const imgClone = img.cloneNode(true)
                 if (imgClone.attribs['data-my-picture-class']) {
                     delete imgClone.attribs['data-my-picture-class']
+                }
+
+                // ? удаляем перенесённые атрибуты, чтобы не было дублей
+                for (const attrName of liftedAttrs) {
+                    if (imgClone.attribs[attrName] !== undefined) {
+                        delete imgClone.attribs[attrName]
+                    }
                 }
 
                 // Для десктоп-first фоллбэком всегда является оригинальная картинка
