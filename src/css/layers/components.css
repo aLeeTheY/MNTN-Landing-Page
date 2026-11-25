@@ -193,7 +193,10 @@
     } */
 
     .intersection-image-snow {
-        @apply relative isolate;
+        @apply absolute isolate inset-y-0 -inset-x-[10%] origin-center;
+
+        rotate: 15deg;
+        scale: 1.5;
     }
 
     .intersection-image {
