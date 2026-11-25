@@ -295,7 +295,7 @@
     /* ! --- HEADER MOBILE MENU
        ! ---------------------- */
     .menu-btn {
-        @apply block transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
+        @apply flex items-center transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
         @apply laptop:hidden;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
