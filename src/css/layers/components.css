@@ -23,12 +23,26 @@
     }
 
     /* * other keyframes */
-    @keyframes rubber-baton {
+    /* @keyframes rubber-baton {
         from {
-            width: 7.2px;
+            width: 0.666em;
         }
         to {
-            width: 72px;
+            width: 4em;
+        }
+    } */
+
+    @property --rubber-plug {
+        syntax: '<number>';
+        inherits: true;
+        initial-value: 0.01;
+    }
+    @keyframes rubber-plug-anim {
+        from {
+            --rubber-plug: 0.01;
+        }
+        to {
+            --rubber-plug: 1;
         }
     }
 
@@ -48,6 +62,11 @@
         &::before {
             @apply content-[attr(data-number)] absolute -z-1 -top-[clamp(120px,0.0214*100vw+110.8755px,152px)] -left-[clamp(95px,0.0368*100vw+79.3173px,150px)] font-[Gilroy,sans-serif] font-bold text-[clamp(180px,0.0402*100vw+162.8916px,240px)] text-white/10 leading-none tracking-normal whitespace-nowrap;
         }
+
+        .step &::before {
+            @apply will-change-transform;
+            @apply translate-y-[calc(25.2525px*var(--rubber-plug)-25.2525px)] translate-x-[calc(75.7576px*var(--rubber-plug)-75.7576px)];
+        }
     }
 
     h3 {
@@ -59,18 +78,12 @@
         @apply tablet:leading-none;
 
         &::before {
-            @apply content-[''] w-72 h-2 bg-[#FBD784];
+            @apply content-[''] w-[4em] h-2 bg-[#FBD784];
         }
 
-        &.animated::before {
-            @apply content-['']  h-2 bg-[#FBD784] will-change-[width];
-
-            animation-timeline: view();
-            animation-timing-function: ease-in-out;
-            animation-fill-mode: both;
-
-            animation-range: entry 10% cover 40%;
-            animation-name: rubber-baton;
+        .step &::before {
+            @apply will-change-[width];
+            @apply w-[calc(3.4798em*var(--rubber-plug)+0.5202em)];
         }
     }
 
@@ -81,6 +94,11 @@
 
     p {
         @apply leading-[1.78em];
+
+        .step & {
+            @apply will-change-transform;
+            @apply translate-y-[calc(-101.0101px*var(--rubber-plug)+101.0101px)];
+        }
     }
 
     a {
@@ -95,6 +113,13 @@
 
         /* * active */
         @apply active:text-[#dfbf75] active:translate-y-2;
+
+        .step & {
+            @apply will-change-transform;
+
+            @apply translate-y-[calc(-101.0101px*var(--rubber-plug)+101.0101px)];
+            @apply desktop:translate-y-[calc(-202.0202px*var(--rubber-plug)+202.0202px)];
+        }
     }
 
     .hero-fixed-paragraph {
@@ -134,7 +159,7 @@
     /* ! --- Page Wrapper
        ! ---------------- */
     .wrapper {
-        @apply mx-auto w-full px-[clamp(16px,0.0401*100vw-1.097px,40px)];
+        @apply mx-auto w-full px-[clamp(16px,0.0401*100vw-1.097px,40px)] overflow-x-clip;
         @apply laptop:px-[clamp(40px,0.0447*100vw-5.8101px,80px)];
 
         &.wrapper--limited {
@@ -305,6 +330,30 @@
 
     /* ! --- HERO & STEPS
        ! ---------------- */
+    .step {
+        @apply flex flex-col gap-y-[clamp(54px,0.0034*100vw+50.5642px,57px)] items-center desktop:flex-row desktop:gap-x-114;
+
+        animation-name: rubber-plug-anim;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+
+        animation-timeline: view();
+        animation-range: cover -100px cover 37%;
+
+        & img {
+            @apply will-change-transform transform-gpu;
+            @apply translate-x-[calc(-151.5152px*var(--rubber-plug)+151.5152px)];
+        }
+
+        &.step--reverse {
+            @apply desktop:flex-row-reverse;
+
+            & img {
+                @apply -translate-x-[calc(-151.5152px*var(--rubber-plug)+151.5152px)];
+            }
+        }
+    }
+
     .goto-btn {
         @apply flex-none self-start;
         @apply flex items-center gap-x-16 text-nowrap text-[#FBD784] transition-[color,padding-right,padding-bottom] duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
