@@ -11,44 +11,49 @@ export function initScrollspyManager() {
     // * настройки обсервера
     const observer_options = {
         root: null,
-        rootMargin: '-45% 0px -65% 0px',
+        rootMargin: '-45% 0px -45% 0px',
         threshold: 0,
     }
 
-    let prevId: null | string
+    let prevId: null | string = null
     const observer = new IntersectionObserver((entries) => {
         // * тут код, который выполнится срабатывании обсервера
 
         entries.forEach((entry) => {
             let id = entry.target.getAttribute('id')
 
+            // * for manual debug
+            // console.log(`id = ${id}\nprevId = ${prevId}\n\n`)
+
+            // * footer всегда прокидывает id на step-03 т.к. он всегда идёт после него
             if (id === 'footer') {
-                // * footer всегда прокидывает id на step-03 т.к. он всегда идёт после него
                 id = 'step-03'
             }
 
-            if (id !== 'step-01' && id !== 'step-02' && id !== 'step-03') {
-                // * если попадаются все другие id - сбрасываем класс
+            // * если это целевой id
+            if (id === 'step-01' || id === 'step-02' || id === 'step-03') {
+                if (entry.isIntersecting) {
+                    if (prevId && prevId !== id) {
+                        scrollspy_desktop.classList.remove(`active__${prevId}`)
+                        scrollspy_mobile.classList.remove(`active__${prevId}`)
+                    }
 
-                scrollspy_desktop.classList.remove(`active__${prevId}`)
-                scrollspy_mobile.classList.remove(`active__${prevId}`)
+                    scrollspy_desktop.classList.add(`active__${id}`)
+                    scrollspy_mobile.classList.add(`active__${id}`)
 
-                prevId = null
-
-                return
-            }
-
-            // * целевые id
-            if (entry.isIntersecting) {
-                if (prevId) {
-                    scrollspy_desktop.classList.remove(`active__${prevId}`)
-                    scrollspy_mobile.classList.remove(`active__${prevId}`)
+                    prevId = id
                 }
+            }
+            // * НЕ целевые id и НЕ footer
+            else {
+                if (entry.isIntersecting) {
+                    if (prevId) {
+                        scrollspy_desktop.classList.remove(`active__${prevId}`)
+                        scrollspy_mobile.classList.remove(`active__${prevId}`)
 
-                scrollspy_desktop.classList.add(`active__${id}`)
-                scrollspy_mobile.classList.add(`active__${id}`)
-
-                prevId = id
+                        prevId = null
+                    }
+                }
             }
         })
     }, observer_options)
@@ -57,29 +62,4 @@ export function initScrollspyManager() {
     sections.forEach((section) => {
         observer.observe(section)
     })
-
-    let ticking = false
-    window.addEventListener(
-        'scroll',
-        () => {
-            if (ticking) {
-                return
-            }
-            ticking = true
-
-            requestAnimationFrame(() => {
-                if (window.scrollY < 100) {
-                    if (prevId) {
-                        scrollspy_desktop.classList.remove(`active__${prevId}`)
-                        scrollspy_mobile.classList.remove(`active__${prevId}`)
-
-                        prevId = null
-                    }
-                }
-
-                ticking = false
-            })
-        },
-        { passive: true },
-    )
 }

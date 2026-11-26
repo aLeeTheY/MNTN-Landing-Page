@@ -19,6 +19,7 @@
     "license": "MIT",
     "type": "module",
     "devDependencies": {
+        "@11ty/eleventy-img": "^7.1.1",
         "@commitlint/cli": "^21.2.3",
         "@commitlint/config-conventional": "^21.2.3",
         "@commitlint/format": "^21.2.3",
@@ -94,6 +95,7 @@
         "postcss-rename": "^0.8.1",
         "postcss-round-subpixels": "^2.0.0",
         "postcss-sort-media-queries": "^6.7.1",
+        "postcss-viewport-fallback": "^2.0.0",
         "postcss-will-change": "^4.0.1",
         "posthtml": "^0.16.7",
         "posthtml-alt-always": "^1.0.1",
@@ -162,6 +164,7 @@
     },
     "dependencies": {
         "@callbacksystems/focus-trap": "^3.0.0",
+        "aos": "^2.3.4",
         "pure-snow.js": "^2.1.0"
     }
 }

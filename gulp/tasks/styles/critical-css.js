@@ -90,17 +90,33 @@ export async function criticalCss() {
         keyframes: 'critical',
         // ! Сжатие critical css
         compress: true,
+
         // ! Аналог penthouse forceInclude из старой таски
         allowRules: [
             /:root/,
             /data-theme/,
+
+            // * если стоят в самом начале
             /^\*/,
-            /^\.js/,
-            /^\.nojs/,
-            /^\.page-/,
-            /^\.avif/,
-            /^\.webp/,
-            /^\.rounded-/,
+
+            // * если стоят в любом месте
+            /\.js/,
+            /\.nojs/,
+            /\.page-/,
+            /\.avif/,
+            /\.webp/,
+
+            // ? --- Vendor classes
+            /\[data-aos|\.aos-/,
+
+            // ? --- Tailwind classes
+            /\.pt-/,
+            /\.pb-/,
+
+            /\.rounded-/,
+
+            // ? --- My own classes
+            // /\.active__step-01\b/,
         ],
         // ! Назначем logger
         logger: beastiesLogger,

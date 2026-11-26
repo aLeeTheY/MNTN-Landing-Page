@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default (ctx) => {
     // ! единая точка чтения опций из gulp
-    const ctxOptions = ctx.options?.config?.ctx || {}
+    const ctxOptions = ctx.config?.ctx || {}
 
     const cssMode = ctxOptions.cssMode || 'scss'
     const isMobileFirst = ctxOptions.isMobileFirst || false
@@ -20,11 +19,14 @@ export default (ctx) => {
 
     return {
         plugins: {
-            // // ! склеиваем все @import в один файл
+            // ! склеиваем все @import в один файл | disabled
             // 'postcss-import': {},
 
-            // * замена px на rem в зависимости от условий
+            // ! dvh, svh, lvh and the other fifteen dynamic viewport units fallback
+            'postcss-viewport-fallback': {},
+
             // ! default config
+            // * замена px на rem в зависимости от условий
             // 'postcss-pxtorem': {
             //     rootValue: 16,
             //     unitPrecision: 5,
@@ -35,6 +37,7 @@ export default (ctx) => {
             //     minPixelValue: 0,
             //     exclude: /node_modules/i,
             // },
+
             // ! temp disable
             // 'postcss-pxtorem': {
             //     rootValue: 16,
@@ -56,6 +59,7 @@ export default (ctx) => {
             //     minPixelValue: 3,
             //     exclude: /node_modules/i,
             // },
+
             // ! pxToRem --- ALL | Ломает border-radius Tailwind'а !!!
             'postcss-pxtorem': {
                 rootValue: 16,
@@ -67,22 +71,28 @@ export default (ctx) => {
                 minPixelValue: 2,
                 exclude: /node_modules/i,
             },
+
             // * замена clamp на комбинации min + max (old plugin)
             // 'postcss-clamp': {
             //     precalculate: true,
             // },
-            // * округлить пиксельные значения до целых чисел
+
             // ! отключать для Fluid Design !!!
+            // * округлить пиксельные значения до целых чисел
             // 'postcss-round-subpixels': {},
+
             // * fallback для font-variant (совместимость)
             'postcss-font-variant': {},
+
             // * автоматическое добавление font-display: swap для внешних локальных шрифтов (only works in @font-face)
             'postcss-font-display': {
                 display: 'swap',
                 replace: false,
             },
+
             // * css-hack для создания fallback для will-change у браузеров, которые не поддерживают will-change
             'postcss-will-change': {},
+
             // * preset-env + autoprefixer
             'postcss-preset-env': {
                 // default value
@@ -94,66 +104,72 @@ export default (ctx) => {
                 // disabled
                 // autoprefixer: { grid: true },
             },
-            ...(isProd && {
-                // * rename переменных css (более короткие)
-                'postcss-rename/variable': {
-                    strategy: 'minimal',
-                    by: 'whole',
-                    ids: false,
-                    except: [
-                        // * Все переменные Tailwind
-                        /^--tw-/,
-                        /^--\*:/,
-                        /^--color-/,
-                        /^--font-/,
-                        /^--text-/,
-                        /^--font-weight-/,
-                        /^--tracking-/,
-                        /^--leading-/,
-                        /^--tab-size-/,
-                        /^--breakpoint-/,
-                        /^--container-/,
-                        /^--spacing-/,
-                        /^--radius-/,
-                        /^--shadow-/,
-                        /^--inset-shadow-/,
-                        /^--drop-shadow-/,
-                        /^--blur-/,
-                        /^--perspective-/,
-                        /^--zoom-/,
-                        /^--aspect-/,
-                        /^--ease-/,
-                        /^--animate-/,
-                        /^--default-/, // Дефолтные значения
+            // ! disabled | больше проблем, чем пользы
+            // ...(isProd && {
+            //     // * rename переменных css (более короткие)
+            //     'postcss-rename/variable': {
+            //         strategy: 'minimal',
+            //         by: 'whole',
+            //         ids: false,
+            //         except: [
+            //             // * Все переменные Tailwind
+            //             /^--tw-/,
+            //             /^--\*:/,
+            //             /^--color-/,
+            //             /^--font-/,
+            //             /^--text-/,
+            //             /^--font-weight-/,
+            //             /^--tracking-/,
+            //             /^--leading-/,
+            //             /^--tab-size-/,
+            //             /^--breakpoint-/,
+            //             /^--container-/,
+            //             /^--spacing-/,
+            //             /^--radius-/,
+            //             /^--shadow-/,
+            //             /^--inset-shadow-/,
+            //             /^--drop-shadow-/,
+            //             /^--blur-/,
+            //             /^--perspective-/,
+            //             /^--zoom-/,
+            //             /^--aspect-/,
+            //             /^--ease-/,
+            //             /^--animate-/,
+            //             /^--default-/, // Дефолтные значения
 
-                        // * Всё остальное
-                        'dont-touch-me',
-                    ],
-                    outputMapCallback: false,
-                },
-                // ! disabled
-                // * rename имён классов css (более короткие)
-                // 'postcss-rename': {
-                //     strategy: 'minimal',
-                //     by: 'whole',
-                //     ids: false,
-                //     except: ['.dont-touch-me'],
-                //     outputMapCallback: false,
-                // },
-            }),
+            //             // * Всё остальное
+            //             'dont-touch-me',
+            //         ],
+            //         outputMapCallback: false,
+            //     },
+
+            //     // ! disabled
+            //     // * rename имён классов css (более короткие)
+            //     'postcss-rename': {
+            //         strategy: 'minimal',
+            //         by: 'whole',
+            //         ids: false,
+            //         except: ['.dont-touch-me'],
+            //         outputMapCallback: false,
+            //     },
+            // }),
+
             // ! функционал уже есть в cssnano (discardDuplicates)
             // * слияние идентичных селекторов (убираем дубликаты)
             // 'postcss-combine-duplicated-selectors': { removeDuplicatedValues: false },
-            // * группировка медиазапросов в конец CSS файла
+
             // ! отключено | иногда ломает специфичность модификаторов !!!
+            // * группировка медиазапросов в конец CSS файла
             // 'postcss-sort-media-queries': {
             //     sort: isMobileFirst ? 'mobile-first' : 'desktop-first',
             // },
+
             // TODO: доделать webp-in-css и протестить
             // 'webp-in-css/plugin': {
             //     webpClass: 'webp',
             //     noWebpClass: 'no-webp',
             // },
+
             // ! не подходит
             // * обфускация CSS, замена имён классов упрощёными именами (только в staging/prod)
             // ...(isProd && {
@@ -169,6 +185,7 @@ export default (ctx) => {
             //         multi: false,
             //     },
             // }),
+
             // * удаление неиспользуемых CSS (только в staging/prod + SCSS)
             ...(isProd &&
                 cssMode === 'scss' && {
@@ -193,18 +210,31 @@ export default (ctx) => {
                         },
                     },
                 }),
-            // * сжатие CSS (только в prod и staging modes)
+
+            // * cssnano (только в prod и staging modes)
             ...(isProd && {
                 cssnano: {
-                    // preset: "default",
+                    // ! более безопасно | со слов Google +50-70% к сжатию
                     preset: [
-                        'advanced',
+                        'default',
                         {
-                            // * отключаем склейку правил
-                            // mergeRules: false,
-                            // minifySelectors: false,
+                            discardComments: {
+                                removeAll: false,
+                                // * Сохраняем комментарии, начинающиеся с "beasties:"
+                                regex: /^beasties:/,
+                            },
                         },
                     ],
+
+                    // ! опционально | более агрессивный конфиг | со слов Google +1-3% к сжатию
+                    // preset: [
+                    //     'advanced',
+                    //     {
+                    //         // * отключаем склейку правил
+                    //         // mergeRules: false,
+                    //         // minifySelectors: false,
+                    //     },
+                    // ],
                 },
             }),
         },

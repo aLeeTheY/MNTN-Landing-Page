@@ -22,16 +22,7 @@
         }
     }
 
-    /* * other keyframes */
-    /* @keyframes rubber-baton {
-        from {
-            width: 0.666em;
-        }
-        to {
-            width: 4em;
-        }
-    } */
-
+    /* * scroll driven anim */
     @property --rubber-plug {
         syntax: '<number>';
         inherits: true;
@@ -187,6 +178,7 @@
         grid-area: 1 / 1;
     }
 
+    /* * for test */
     /* .intersection-image-wrapper {
         @apply transform-gpu;
         transform: none !important;
@@ -200,12 +192,13 @@
     }
 
     .intersection-image {
-        @apply object-cover object-[20%_0%] w-full min-h-1024 motion-reduce:animate-none;
+        @apply will-change-transform;
+        @apply object-cover object-[20%_0%] min-w-[120dvw] w-full motion-reduce:animate-none laptop:min-w-auto;
 
         animation-timeline: scroll(root block);
         animation-timing-function: linear;
         animation-fill-mode: both;
-        animation-range: 0 135vh;
+        animation-range: 0 135dvh;
 
         &.intersection-image--layer-front {
             @apply z-6 absolute top-0 inset-x-0 h-auto;
@@ -244,9 +237,9 @@
         }
 
         &.intersection-image--layer-back {
-            @apply z-0 relative h-full max-h-1690;
+            @apply z-0 relative h-full min-h-[max(110dvh,1024px)] max-h-1690;
 
-            /* @apply -mt-[var(--parallax-back)]; */
+            /* -top-[clamp(72px,0.215*100vw-19.5886px,720px)] */
             /* height: calc(100% + -1 * var(--parallax-back)); */
 
             animation-name: parallax-back;
@@ -310,8 +303,9 @@
     }
 
     .menu-container {
+        @apply will-change-transform;
         @apply scroll-smooth scrollbar-thin;
-        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] will-change-transform translate-x-full transition-transform duration-300 overflow-y-auto;
+        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto;
 
         @apply laptop:hidden;
 
@@ -324,17 +318,18 @@
     }
 
     .menu-fade {
+        @apply will-change-[opacity];
         @apply pointer-events-none select-none fixed inset-0 z-40 bg-black opacity-0 transition-[opacity] duration-300;
 
         .menu-container.open ~ & {
-            @apply opacity-50;
+            @apply opacity-78;
         }
     }
 
     /* ! --- HERO & STEPS
        ! ---------------- */
     .step {
-        @apply flex flex-col gap-y-[clamp(54px,0.0034*100vw+50.5642px,57px)] items-center desktop:flex-row desktop:gap-x-114;
+        @apply flex flex-col gap-y-[clamp(54px,0.0034*100vw+50.5642px,57px)] items-center desktop:flex-row desktop:gap-x-114 transform-3d;
 
         animation-name: rubber-plug-anim;
         animation-timing-function: ease-out;
@@ -344,7 +339,7 @@
         animation-range: cover -100px cover 37%;
 
         & img {
-            @apply will-change-transform transform-gpu;
+            @apply will-change-transform;
             @apply translate-x-[calc(-151.5152px*var(--rubber-plug)+151.5152px)];
         }
 
@@ -393,9 +388,11 @@
         }
 
         &.goto-btn--hero-variant {
+            @apply will-change-transform transform-gpu transform-3d; /* ? кастыль для Firefox */
             @apply text-white;
 
             & .svg-wrap {
+                @apply will-change-transform;
                 @apply w-16 h-24 pl-0 pt-14 animate-bounce;
 
                 &::before {
@@ -429,6 +426,7 @@
 
     /* ! --- HERO
        ! -------- */
+
     .scrollspy {
         @apply relative flex justify-end items-center pr-32 py-16 border-r-3 border-white/50;
 

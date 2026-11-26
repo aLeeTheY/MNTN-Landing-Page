@@ -16,7 +16,6 @@ import {
     NOTIFICATION_HANDLER_TITLES,
 } from '../../helpers/error-handler.js'
 import { inlineAssetsInHtml } from '../../helpers/inline-assets.js'
-import { htmlImg2PictureTransformer } from '../../helpers/html-img2picture-transformer.js'
 
 // * html plugins
 // import { nunjucksCompile } from 'gulp-nunjucks'
@@ -139,41 +138,9 @@ function createHtmlStream({
                     manageEnv: nunjucksManageEnvironment,
                 }),
             )
-            // * генерируем <img> в <picture>/<source> + responsive + avif/webp
-            .pipe(
-                htmlImg2PictureTransformer(path.src.images.base, {
-                    desktopFirst: !env.isMobileFirst,
-                    // ? cчитать и проставлять width/height
-                    setDimensions: true,
-                    // ? добавлять loading="lazy"
-                    // ! ухудшает Lighthouse Mobile Score, но от него больше проблем, чем пользы
-                    setLazyLoading: false,
-                    // ? добавлять decoding="async"
-                    setAsyncDecoding: true,
 
-                    // ? список атрибутов, которые переносим с <img> на <picture>
-                    liftAttributesToPicture: [
-                        'data-aos',
-                        'data-aos-offset',
-                        'data-aos-delay',
-                        'data-aos-duration',
-                        'data-aos-easing',
-                        'data-aos-mirror',
-                        'data-aos-once',
-                        'data-aos-anchor-placement',
-                    ],
-
-                    breakpoints: [
-                        {
-                            /* ! при редактировании media или baseWidth надо проверить asset/images.js и head preload images links */
-                            media: 768,
-                            suffix: '-mobile',
-                            baseWidth: 375,
-                            densities: [1, 2],
-                        },
-                    ],
-                }),
-            )
+            // * вызываем gulp-posthtml
+            .pipe(posthtml(posthtmlPlugins, posthtmlOptions))
 
             // * вставка инлайн файлов, если включена
             .pipe(
@@ -278,9 +245,6 @@ function createHtmlStream({
             // // * форматируем код через prettier
             // .pipe(prettier())
 
-            // * вызываем gulp-posthtml
-            .pipe(posthtml(posthtmlPlugins, posthtmlOptions))
-
             // * минифицируем html
             .pipe(
                 gulpIf(
@@ -310,10 +274,10 @@ function createHtmlStream({
                     }),
                 ),
             )
-            // ! posthtml so bad...
-            // .pipe(posthtml())
+
             // * кладем результат в папку сборки
             .pipe(gulp.dest(destPathByLocale))
+
         // * обновляем сервер разработки
         // .pipe(browserSync.stream())
     )
