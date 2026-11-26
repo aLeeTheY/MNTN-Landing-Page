@@ -1,0 +1,21 @@
+/* TEAM */
+    Frontend Developer: Vladimir Nikulin
+    Contact: aleethey [at] gmail.com
+    GitHub: https://github.com/aLeeTheY
+    Telegram: @aLeeTheY
+    Twitter: @aLeeTheY
+    Location: Voronezh, Russia
+
+/* THANKS */
+    Kryston Schwarze: For the design mockup (https://www.figma.com/community/file/788675347108478517/mntn-landing-page).
+
+/* SITE */
+    Last update: 2026/11/18
+    Language: English
+    Copyright: (c) 2025-2026 aLeeTheY
+    License: MIT
+    Repository: https://github.com/aLeeTheY/MNTN-Landing-Page
+    Frontend: Nunjucks, Tailwind CSS
+    Software: Visual Studio Code, Figma
+    Build Tools: Gulp, Node.js, Git
+    Testing & Quality: Playwright, Stylelint, ESLint, Prettier

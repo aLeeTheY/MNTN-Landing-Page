@@ -1,0 +1,21 @@
+{
+    "name": "MNTN",
+    "short_name": "MNTN",
+    "icons": [
+        {
+            "src": "/web-app-manifest-192x192-078699f259.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/web-app-manifest-512x512-e80f7ad8b5.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "theme_color": "#0B1D26",
+    "background_color": "#0B1D26",
+    "display": "standalone"
+}
