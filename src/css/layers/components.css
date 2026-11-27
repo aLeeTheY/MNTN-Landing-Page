@@ -420,9 +420,6 @@
         @apply hover:text-[#FBD784];
 
         /* * active */
-        /* ? перебивает дефолтное поведение ссылки */
-        @apply active:translate-y-0;
-
         @apply active:text-[#dfbf75] active:pr-7;
         &:active .svg-wrap {
             &::before {
@@ -462,6 +459,9 @@
             @apply hover:text-[#FBD784];
 
             /* * active */
+            /* ? перебивает дефолтное поведение ссылки */
+            @apply active:translate-y-0;
+
             @apply active:text-[#dfbf75] active:pr-0 active:pb-7;
             &:active .svg-wrap {
                 &::before {
