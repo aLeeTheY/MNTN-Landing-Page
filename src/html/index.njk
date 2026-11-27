@@ -3,13 +3,13 @@
 <!-- ? название текущей страницы в домене --->
 {% set current_page__page_name = 'index' %}
 
-<!-- ? передаем текстовые данные из файла переовдов *.json для 'head' этой страницы -->
+<!-- ? передаем текстовые данные из файла переводов *.json для 'head' этой страницы -->
 {% set current_page__head_content = index.head %}
 
 {% block content %}
     <section
         id="hero"
-        class="relative pt-[clamp(120px,0.0535*100vw+97.1888px,200px)] pb-[clamp(620px,0.5408*100vw+65.6983px,1104px)] min-h-[max(calc(110dvh-clamp(40px,0.0161*100vw+33.1566px,64px)-30px),1024px)] desktop:pb-976"
+        class="relative pt-[clamp(100px,0.0669*100vw+71.4859px,200px)] pb-[clamp(620px,0.5408*100vw+65.6983px,1104px)] min-h-[max(calc(110dvh-clamp(40px,0.0161*100vw+33.1566px,64px)-30px),1024px)] desktop:pb-976"
         data-beasties-container>
         <div class="wrapper flex justify-center">
             <nav
@@ -83,7 +83,7 @@
             <li id="step-01" class="step">
                 <div
                     class="flex flex-col gap-y-[clamp(24px,0.0034*100vw+20.5642px,27px)] ml-[clamp(24px,0.0843*100vw-11.9277px,150px)] desktop:max-w-632">
-                    <h4>Get Started</h4>
+                    <h4><span>Get Started</span></h4>
                     <h2 data-number="01">What level of hiker are you?</h2>
 
                     <p>
@@ -113,7 +113,7 @@
             <li id="step-02" class="step step--reverse">
                 <div
                     class="flex flex-col gap-y-[clamp(24px,0.0034*100vw+20.5642px,27px)] ml-[clamp(24px,0.0843*100vw-11.9277px,150px)] desktop:max-w-632">
-                    <h4>Hiking Essentials</h4>
+                    <h4><span>Hiking Essentials</span></h4>
                     <h2 data-number="02">Picking the right Hiking Gear!</h2>
 
                     <p>
@@ -143,7 +143,7 @@
             <li id="step-03" class="step">
                 <div
                     class="flex flex-col gap-y-[clamp(24px,0.0034*100vw+20.5642px,27px)] ml-[clamp(24px,0.0843*100vw-11.9277px,150px)] desktop:max-w-632">
-                    <h4>Where You Go Is The Key</h4>
+                    <h4><span>Where You Go Is The Key</span></h4>
                     <h2 data-number="03">Understand Your Map & Timing</h2>
 
                     <p>

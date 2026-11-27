@@ -25,24 +25,16 @@
         <div class="intersection-images-container-wrapper" data-beasties-container>
             <div class="intersection-images-container">
                 <img
-                    data-aos="zoom-out"
+                    data-aos="zoom-out-right"
                     data-aos-delay="150"
                     data-aos-duration="2500"
                     data-aos-easing="ease-out-cubic"
-                    class="aos-item intersection-image intersection-image--layer-back"
-                    data-my-picture-class="intersection-image-wrapper"
-                    src="@images/hero/bg__layer_back.png"
-                    alt="Hero background (layer back)" />
-
-                <img
-                    data-aos="zoom-out-up"
-                    data-aos-delay="150"
-                    data-aos-duration="2500"
-                    data-aos-easing="ease-out-cubic"
-                    class="aos-item intersection-image intersection-image--layer-middle"
-                    data-my-picture-class="intersection-image-wrapper"
-                    src="@images/hero/bg__layer_middle.png"
-                    alt="Hero background (layer middle)" />
+                    class="aos-item intersection-image intersection-image--layer-front"
+                    data-my-picture-class="intersection-image-wrapper intersection-image-wrapper--layer-front"
+                    data-my-preload="true"
+                    fetchpriority="high"
+                    src="@images/hero/bg__layer_front.png"
+                    alt="Hero background (layer front)" />
 
                 <div
                     id="snow"
@@ -54,16 +46,26 @@
                     data-aos-easing="ease-out-cubic"></div>
 
                 <img
-                    data-aos="zoom-out-right"
+                    data-aos="zoom-out-up"
                     data-aos-delay="150"
                     data-aos-duration="2500"
                     data-aos-easing="ease-out-cubic"
-                    class="aos-item intersection-image intersection-image--layer-front"
-                    data-my-picture-class="intersection-image-wrapper"
-                    data-my-preload="true"
+                    class="aos-item intersection-image intersection-image--layer-middle"
+                    data-my-picture-class="intersection-image-wrapper intersection-image-wrapper--layer-middle"
                     fetchpriority="high"
-                    src="@images/hero/bg__layer_front.png"
-                    alt="Hero background (layer front)" />
+                    src="@images/hero/bg__layer_middle.png"
+                    alt="Hero background (layer middle)" />
+
+                <img
+                    data-aos="zoom-out"
+                    data-aos-delay="150"
+                    data-aos-duration="2500"
+                    data-aos-easing="ease-out-cubic"
+                    class="aos-item intersection-image intersection-image--layer-back"
+                    data-my-picture-class="intersection-image-wrapper intersection-image-wrapper--layer-back"
+                    fetchpriority="low"
+                    src="@images/hero/bg__layer_back.png"
+                    alt="Hero background (layer back)" />
             </div>
         </div>
 

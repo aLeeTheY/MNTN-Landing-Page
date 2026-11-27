@@ -40,7 +40,7 @@
     /* ! --- TYPOGRAPHY
        ! -------------- */
     h1 {
-        @apply text-left text-white text-[clamp(42px,0.0175*100vw+34.5263px,48px)] font-[Chronicle_Display,serif] font-semibold leading-[1.136em];
+        @apply text-left text-white text-[clamp(42px,0.0175*100vw+34.5263px,48px)] font-[Chronicle_Display,serif] font-semibold leading-[1.136em] max-w-[clamp(520px,0.2339*100vw+420.3509px,600px)];
         @apply tablet:text-[clamp(48px,0.0392*100vw+17.8431px,58px)] tablet:max-w-[clamp(600px,0.4706*100vw+238.1176px,720px)];
         @apply laptop:text-[clamp(58px,0.0335*100vw+23.6425px,88px)] laptop:max-w-[clamp(720px,0.257*100vw+456.5922px,950px)];
     }
@@ -55,8 +55,10 @@
         }
 
         .step &::before {
-            @apply will-change-transform;
+            @apply will-change-[translate];
             @apply translate-y-[calc(25.2525px*var(--rubber-plug)-25.2525px)] translate-x-[calc(75.7576px*var(--rubber-plug)-75.7576px)];
+
+            @apply motion-reduce:translate-0;
         }
     }
 
@@ -72,9 +74,20 @@
             @apply content-[''] w-[4em] h-2 bg-[#FBD784];
         }
 
-        .step &::before {
-            @apply will-change-[width];
-            @apply w-[calc(3.4798em*var(--rubber-plug)+0.5202em)];
+        .step & {
+            & span {
+                @apply will-change-[translate];
+                @apply -translate-x-[calc(4em*(1-(0.8586*var(--rubber-plug)+0.1414)))];
+
+                @apply motion-reduce:translate-x-0;
+            }
+
+            &::before {
+                @apply will-change-[scale];
+                @apply origin-left scale-x-[calc(0.8586*var(--rubber-plug)+0.1414)];
+
+                @apply motion-reduce:scale-x-[1];
+            }
         }
     }
 
@@ -87,12 +100,15 @@
         @apply leading-[1.78em];
 
         .step & {
-            @apply will-change-transform;
+            @apply will-change-[translate];
             @apply translate-y-[calc(-101.0101px*var(--rubber-plug)+101.0101px)];
+
+            @apply motion-reduce:translate-y-0;
         }
     }
 
     a {
+        @apply will-change-[translate];
         @apply leading-none inline-block transition-[color,translate] duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
@@ -106,10 +122,10 @@
         @apply active:text-[#dfbf75] active:translate-y-2;
 
         .step & {
-            @apply will-change-transform;
-
             @apply translate-y-[calc(-101.0101px*var(--rubber-plug)+101.0101px)];
             @apply desktop:translate-y-[calc(-202.0202px*var(--rubber-plug)+202.0202px)];
+
+            @apply motion-reduce:translate-y-0;
         }
     }
 
@@ -133,6 +149,7 @@
         @apply laptop:text-left;
 
         & a {
+            @apply will-change-[translate];
             @apply text-current leading-[1.78em];
 
             /* ! LVFHA pseudo-class order REQUIRED !!! */
@@ -184,15 +201,29 @@
         transform: none !important;
     } */
 
+    .intersection-image-wrapper {
+        &.intersection-image-wrapper--layer-front {
+            @apply z-6;
+        }
+
+        &.intersection-image-wrapper--layer-middle {
+            @apply z-2;
+        }
+
+        &.intersection-image-wrapper--layer-back {
+            @apply z-0;
+        }
+    }
+
     .intersection-image-snow {
-        @apply absolute isolate inset-y-0 -inset-x-[10%] origin-center;
+        @apply z-4 absolute isolate inset-y-0 -inset-x-[10%] origin-center;
 
         rotate: 15deg;
         scale: 1.5;
     }
 
     .intersection-image {
-        @apply will-change-transform;
+        @apply will-change-[transform,translate,height];
         @apply object-cover object-[20%_0%] min-w-[120dvw] w-full motion-reduce:animate-none laptop:min-w-auto;
 
         animation-timeline: scroll(root block);
@@ -201,7 +232,7 @@
         animation-range: 0 135dvh;
 
         &.intersection-image--layer-front {
-            @apply z-6 absolute top-0 inset-x-0 h-auto;
+            @apply absolute top-0 inset-x-0 h-auto;
 
             @apply h-[calc((100%-1*var(--parallax-front))+clamp(55vw,-0.0105*100vw+430.4842px,100vw))];
             /* @apply -bottom-[calc((-1*var(--parallax-front))+clamp(55vw,-0.0105*100vw+430.4842px,100vw))]; */
@@ -223,7 +254,7 @@
         }
 
         &.intersection-image--layer-middle {
-            @apply z-2 absolute top-0 inset-x-0 h-auto -translate-y-[max(0px,calc(0.3395*100vw-651.7895px))];
+            @apply absolute top-0 inset-x-0 h-auto -translate-y-[max(0px,calc(0.3395*100vw-651.7895px))];
 
             /* ? компенсация для parallax'а */
             /* @apply -bottom-[calc(-1*var(--parallax-middle)+max(0px,calc(0.3395*100vw-651.7895px)))]; */
@@ -237,7 +268,8 @@
         }
 
         &.intersection-image--layer-back {
-            @apply z-0 relative h-full min-h-[max(110dvh,1024px)] max-h-1690;
+            @apply relative h-full min-h-[max(110dvh,1024px)] max-h-1690;
+            @apply -top-[12.5dvh]; /* ? компенсация параллакса */
 
             /* -top-[clamp(72px,0.215*100vw-19.5886px,720px)] */
             /* height: calc(100% + -1 * var(--parallax-back)); */
@@ -250,6 +282,8 @@
        ! ---------- */
     .logo {
         @apply flex-none self-start;
+
+        @apply will-change-[translate];
         @apply font-[Chronicle_Display,serif] text-[clamp(24px,0.0054*100vw+21.7189px,32px)] font-bold tracking-[1%] leading-none transition-[color,translate] duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
@@ -272,6 +306,7 @@
     }
 
     .navigation-button {
+        @apply will-change-[translate];
         @apply flex items-center gap-x-8 font-[Gilroy,sans-serif] text-[clamp(14px,0.0027*100vw+12.8594px,18px)] font-bold transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
 
         /* ! LVFHA pseudo-class order REQUIRED !!! */
@@ -288,6 +323,7 @@
     /* ! --- HEADER MOBILE MENU
        ! ---------------------- */
     .menu-btn {
+        @apply will-change-[translate];
         @apply flex items-center transition-all duration-300 outline-dashed outline-2 outline-offset-4 outline-transparent;
         @apply laptop:hidden;
 
@@ -303,9 +339,10 @@
     }
 
     .menu-container {
-        @apply will-change-transform;
         @apply scroll-smooth scrollbar-thin;
-        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto;
+
+        @apply will-change-[translate];
+        @apply fixed top-0 bottom-0 right-0 w-[clamp(255px,0.1672*100vw+183.7625px,355px)] z-50 grid grid-rows-[auto_1fr] pt-[clamp(40px,0.0161*100vw+33.1566px,64px)] pb-[clamp(40px,0.0535*100vw+17.1888px,120px)] bg-[#0B1D26] translate-x-full transition-[translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto;
 
         @apply laptop:hidden;
 
@@ -339,15 +376,20 @@
         animation-range: cover -100px cover 37%;
 
         & img {
-            @apply will-change-transform;
+            @apply will-change-[translate];
             @apply translate-x-[calc(-151.5152px*var(--rubber-plug)+151.5152px)];
+
+            @apply motion-reduce:translate-x-0;
         }
 
         &.step--reverse {
             @apply desktop:flex-row-reverse;
 
             & img {
+                @apply will-change-[translate];
                 @apply -translate-x-[calc(-151.5152px*var(--rubber-plug)+151.5152px)];
+
+                @apply motion-reduce:translate-x-0;
             }
         }
     }
@@ -360,11 +402,13 @@
             @apply relative isolate w-24 h-16 pl-14 flex items-center justify-center;
 
             &::before {
-                @apply content-[''] absolute z-10 left-0 top-1/2 -translate-y-1/2 w-21 h-2 bg-current will-change-transform transition-[background-color,width,height] duration-300;
+                @apply will-change-[scale];
+                @apply content-[''] absolute z-10 left-0 top-1/2 -translate-y-1/2 w-21 h-2 bg-current transition-[background-color,scale] origin-left duration-300;
             }
 
             & svg {
-                @apply relative z-20 will-change-transform transition-transform duration-300;
+                @apply will-change-[translate];
+                @apply relative z-20 transition-transform duration-300;
             }
         }
 
@@ -376,10 +420,14 @@
         @apply hover:text-[#FBD784];
 
         /* * active */
-        @apply active:translate-y-0 active:text-[#dfbf75] active:pr-7;
+        /* ? перебивает дефолтное поведение ссылки */
+        @apply active:translate-y-0;
+
+        @apply active:text-[#dfbf75] active:pr-7;
         &:active .svg-wrap {
             &::before {
-                @apply w-28;
+                /* @apply w-28; */
+                @apply scale-x-[1.333];
             }
 
             & svg {
@@ -388,7 +436,9 @@
         }
 
         &.goto-btn--hero-variant {
-            @apply will-change-transform transform-gpu transform-3d; /* ? кастыль для Firefox */
+            /* ? кастыль для Firefox */
+            /* @apply transform-gpu transform-3d;  */
+
             @apply text-white;
 
             & .svg-wrap {
@@ -396,7 +446,7 @@
                 @apply w-16 h-24 pl-0 pt-14 animate-bounce;
 
                 &::before {
-                    @apply top-0 left-1/2 -translate-y-0 -translate-x-1/2 w-2 h-21;
+                    @apply top-0 left-1/2 -translate-y-0 -translate-x-1/2 w-2 h-21 origin-top;
                 }
 
                 & svg {
@@ -411,10 +461,12 @@
             /* * hover */
             @apply hover:text-[#FBD784];
 
-            @apply active:translate-y-0 active:text-[#dfbf75] active:pr-0 active:pb-7;
+            /* * active */
+            @apply active:text-[#dfbf75] active:pr-0 active:pb-7;
             &:active .svg-wrap {
                 &::before {
-                    @apply h-28;
+                    /* @apply h-28; */
+                    @apply scale-y-[1.333];
                 }
 
                 & svg {
@@ -426,24 +478,27 @@
 
     /* ! --- HERO
        ! -------- */
-
     .scrollspy {
         @apply relative flex justify-end items-center pr-32 py-16 border-r-3 border-white/50;
 
         &::after {
-            @apply content-[''] absolute -right-3 top-0 w-3 h-1/4 bg-white will-change-[top] transition-[top] duration-300;
+            @apply will-change-[translate];
+            @apply content-[''] absolute -right-3 top-0 w-3 h-1/4 bg-white transition-[translate] duration-300;
         }
 
         &.active__step-01::after {
-            @apply top-1/4;
+            /* @apply top-1/4; */
+            @apply translate-y-[100%];
         }
 
         &.active__step-02::after {
-            @apply top-1/2;
+            /* @apply top-1/2; */
+            @apply translate-y-[200%];
         }
 
         &.active__step-03::after {
-            @apply top-3/4;
+            /* @apply top-3/4; */
+            @apply translate-y-[300%];
         }
     }
 

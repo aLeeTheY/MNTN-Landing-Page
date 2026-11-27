@@ -155,7 +155,12 @@ export default function postHtmlEleventyImg() {
 
                     imageAttributes.alt = node.attrs.alt || ''
                     imageAttributes.sizes = node.attrs.sizes || '100vw'
-                    imageAttributes.loading = node.attrs.fetchpriority === 'high' ? 'eager' : 'lazy'
+
+                    // ? eager в любом случае делаем | lazy - gavno
+                    // imageAttributes.loading = node.attrs.fetchpriority === 'high' ? 'eager' : 'lazy'
+                    imageAttributes.loading =
+                        node.attrs.fetchpriority === 'high' ? 'eager' : 'eager'
+
                     imageAttributes.decoding = 'async'
 
                     // ? Eleventy сам подставит правильный src

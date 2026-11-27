@@ -1,7 +1,7 @@
 // ! --- BASE IMPORTS
 // ! ----------------
 // * --- vendors scripts
-import AOS from 'aos'
+// import AOS from 'aos'
 import { createSnow, showSnow } from 'pure-snow.js'
 // * -------------------
 
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenuManager()
     initScrollspyManager()
 
-    // * aos
-    AOS.init()
+    // // * aos
+    // AOS.init()
 
     // * snow
     createSnow()
