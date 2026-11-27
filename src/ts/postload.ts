@@ -2,7 +2,7 @@
 // ! ----------------
 // * --- vendors scripts
 // import AOS from 'aos'
-import { createSnow, showSnow } from 'pure-snow.js'
+// import { createSnow, showSnow } from 'pure-snow.js'
 // * -------------------
 
 // * --- my scripts
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // // * aos
     // AOS.init()
 
-    // * snow
-    createSnow()
-    showSnow(true)
+    // // * snow
+    // createSnow()
+    // showSnow(true)
 })

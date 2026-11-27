@@ -108,6 +108,7 @@ export async function criticalCss() {
 
             // ? --- Vendor classes
             /\[data-aos|\.aos-/,
+            /\.snowflake/,
 
             // ? --- Tailwind classes
             /\.pt-/,

@@ -437,7 +437,7 @@
 
         &.goto-btn--hero-variant {
             /* ? кастыль для Firefox */
-            /* @apply transform-gpu transform-3d;  */
+            @apply transform-3d transform-gpu;
 
             @apply text-white;
 
